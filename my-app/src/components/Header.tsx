@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { NameAndPath } from '../App';
+import PageLinkButton from './PageLinkButton';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -18,25 +20,44 @@ const useStyles = makeStyles((theme: Theme) =>
         title: {
             flexGrow: 1,
         },
+        toolbar: {
+            justifyContent: 'space-between',
+            overflowX: 'auto',
+        }
     }),
 );
 
-export default function Header() {
+interface Props {
+    linkPaths: NameAndPath[];
+}
+
+const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
+    const [pages, setPages] = useState<Props>({ linkPaths });
+
     const classes = useStyles();
+
+    const handleClick = () => {
+        console.log(`Going to path}`);
+
+    }
 
     return (
         <div className={classes.root}>
             <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        News
-          </Typography>
-                    <Button color="inherit">Login</Button>
+                <Toolbar className={classes.toolbar}>
+                    {pages.linkPaths.map((path, index) => {
+                        return (
+                            <PageLinkButton
+                                path={path.path}
+                                name={path.name}
+                            />
+                        );
+                    })}
                 </Toolbar>
             </AppBar>
-        </div>
+        </div >
     );
+
 }
+
+export default Header;

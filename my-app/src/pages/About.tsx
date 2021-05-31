@@ -9,6 +9,7 @@ const AboutPage: React.FunctionComponent<IPage & RouteComponentProps<any>> = pro
     useEffect(() => {
         logging.info(`Loading ${props.name}`);
 
+        /*
         let number = props.match.params.number;
 
         if (number) {
@@ -17,6 +18,8 @@ const AboutPage: React.FunctionComponent<IPage & RouteComponentProps<any>> = pro
         else {
             setMessage(`No number provided!`);
         }
+        */
+        setMessage("This is the about page!");
 
     }, [props])
 
