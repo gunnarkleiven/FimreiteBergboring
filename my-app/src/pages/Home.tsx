@@ -4,10 +4,14 @@ import logging from '../config/logging';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
-const HomePage: React.FunctionComponent<IPage> = props => {
+interface Props {
+    pageName: string;
+}
+
+const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
     useEffect(() => {
-        logging.info(`Loading ${props.name}`);
-    }, [props.name])
+        logging.info(`Loading ${pageName}`);
+    }, [])
 
     return (
         <div>

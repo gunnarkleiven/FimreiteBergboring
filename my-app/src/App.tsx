@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Switch, RouteComponentProps } from 'react-router-dom';
 import logging from './config/logging';
 import routes from './config/routes';
 import Header from './components/Header';
-
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import About from './pages/About';
+import Home from './pages/Home';
 
 export interface NameAndPath {
   path: string;
@@ -25,30 +26,18 @@ const App: React.FC<{}> = () => {
   const allPaths: NameAndPath[] = routes.map(({ path, name }) => ({ path: path, name: name }));
 
   return (
-    <div>
-      <Header linkPaths={allPaths} />
+    <BrowserRouter>
+      <div className="App">
+        <Header linkPaths={allPaths} />
+        <Route exact path="/">
+          <Home pageName="This is the home page" />
+        </Route>
+        <Route exact path="/about">
+          <About />
+        </Route>
+      </div>
+    </BrowserRouter>
 
-      <BrowserRouter>
-        <Switch>
-          {routes.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                render={(props: RouteComponentProps<any>) => (
-                  <route.component
-                    name={route.name}
-                    {...props}
-                    {...route.props}
-                  />
-                )}
-              />
-            )
-          })}
-        </Switch>
-      </BrowserRouter>
-    </div>
   );
 }
 

@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { NameAndPath } from '../App';
 import PageLinkButton from './PageLinkButton';
+import { Link } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -38,9 +40,20 @@ const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
 
     const handleClick = () => {
         console.log(`Going to path}`);
-
     }
 
+    return (
+        <div>
+            <Button component={Link} to="/">
+                Home
+            </Button>
+            <Button component={Link} to="/about">
+                About
+            </Button>
+        </div>
+    );
+
+    /*
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -57,6 +70,7 @@ const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
             </AppBar>
         </div >
     );
+    */
 
 }
 
