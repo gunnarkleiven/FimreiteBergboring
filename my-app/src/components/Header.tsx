@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { NameAndPath } from '../App';
 import PageLinkButton from './PageLinkButton';
 import { Link } from 'react-router-dom';
+import MenuDrawer from './MenuDrawer';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -38,22 +39,6 @@ const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
 
     const classes = useStyles();
 
-    const handleClick = () => {
-        console.log(`Going to path}`);
-    }
-
-    return (
-        <div>
-            <Button component={Link} to="/">
-                Home
-            </Button>
-            <Button component={Link} to="/about">
-                About
-            </Button>
-        </div>
-    );
-
-    /*
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -61,16 +46,17 @@ const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
                     {pages.linkPaths.map((path, index) => {
                         return (
                             <PageLinkButton
+                                key={index}
                                 path={path.path}
                                 name={path.name}
                             />
                         );
                     })}
+                    <MenuDrawer linkPaths={linkPaths} />
                 </Toolbar>
             </AppBar>
         </div >
     );
-    */
 
 }
 
