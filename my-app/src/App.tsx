@@ -7,6 +7,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Empty from './pages/Empty';
 import Home from './pages/Home';
+import HeaderAsCard from './components/HeaderAsCard';
 
 export interface NameAndPath {
   path: string;
