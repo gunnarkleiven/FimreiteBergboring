@@ -12,6 +12,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import logo from "../assets/Fimreite-logo-1.png";
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+
+
 
 interface SlideshowSettings {
     autoPlay: boolean;
@@ -25,6 +29,10 @@ interface SlideshowSettings {
 
 }
 
+interface ItemObject {
+    name: string;
+    image: string;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -57,49 +65,28 @@ const Slideshow: React.FC = () => {
         navButtonsAlwaysInvisible: false,
         cycleNavigation: true,
     })
+    const [items, setItems] = useState<ItemObject[]>([
+        {
+            name: "Picture 1",
+            image: image1,
+        },
+        {
+            name: "Picture 2",
+            image: image2,
+        },
+        {
+            name: "Picture 3",
+            image: image3,
+        },
+        {
+            name: "Picture 1",
+            image: image1,
+        },
+    ]);
 
     const classes = useStyles();
 
-    const items = [
-        {
-            Name: "Picture 1",
-            Image: image1
-        },
-        {
-            Name: "Picture 2",
-            Image: image2
-        },
-        {
-            Name: "Picture 3",
-            Image: image3
-        },
-        {
-            Name: "Picture 4",
-            Image: image4
-        },
-    ];
 
-    /*
-    return (
-        <div>
-            <Carousel
-                autoPlay={settings.autoPlay}
-                indicators={settings.indicators}
-                timeout={settings.timeout}
-                cycleNavigation={settings.cycleNavigation}
-                navButtonsAlwaysVisible={settings.navButtonsAlwaysVisible}
-                navButtonsAlwaysInvisible={settings.navButtonsAlwaysInvisible}
-            >
-                {items.map((item, idx) => {
-                    return (
-                        <img key={idx} src={item.Image} alt={item.Name} />
-                    )
-                })}
-            </Carousel>
-        </div>
-    );
-
-    */
     return (
         <div>
             <Carousel
@@ -117,12 +104,11 @@ const Slideshow: React.FC = () => {
                             key={idx}
                             className={classes.card}
                         >
-
                             <CardMedia
                                 className={classes.media}
                                 component="img"
-                                title={item.Name}
-                                image={item.Image}
+                                title={item.name}
+                                image={item.image}
                             />
                         </Card>
                     )
