@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
+            display: "flex",
+            flexDirection: "column",
         },
         footer: {
             backgroundColor: "black",
@@ -17,7 +19,6 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         container: {
             backgroundColor: "black",
-            minHeight: 100,
             alignItems: "flex-end",
         },
         typography: {
@@ -35,7 +36,7 @@ const Footer: React.FunctionComponent = () => {
 
     return (
         <footer className={classes.footer}>
-            <Container maxWidth="lg">
+            <Container maxWidth="sm">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <Typography className={classes.typography} variant="h5" component="h2" align="center" gutterBottom>
@@ -64,7 +65,6 @@ const Footer: React.FunctionComponent = () => {
                     {'© Fimreite Bergboring - 2018 - Utvikla av Gunnar Fimreite Kleiven'}
                 </Typography>
             </Container>
-
         </footer>
     );
 

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import logging from './config/logging';
 import routes from './config/routes';
 import Header from './components/Header';
@@ -19,11 +20,23 @@ export interface NameAndPath {
   name: string;
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+    },
+  }),
+);
+
 
 const App: React.FC<{}> = () => {
   useEffect(() => {
     logging.info('Loading application.')
   }, []);
+
+  const classes = useStyles();
 
 
 
@@ -33,7 +46,7 @@ const App: React.FC<{}> = () => {
 
   return (
 
-    <div className="App">
+    <div className={classes.root}>
       <BrowserRouter>
         <Header linkPaths={allPaths} />
         <Route exact path="/">

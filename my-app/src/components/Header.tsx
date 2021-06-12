@@ -29,11 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
             backgroundColor: "black",
         },
-        /*
         appbar: {
             alignItems: "center",
             backgroundColor: "black",
-        }, */
+        },
         menuButton: {
             marginLeft: theme.spacing(2),
         },
@@ -42,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         toolbar: {
             //justifyContent: 'space-between',
-            //overflowX: 'auto',
+            overflowX: 'auto',
             backgroundColor: "black",
         },
         logoRoot: {
@@ -73,63 +72,35 @@ const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
     const phoneNumber = "000 00 000"
 
     return (
-        <div className={classes.root}>
 
-            <AppBar position="static" className={classes.root}>
-                <Container maxWidth="lg">
-                    <Toolbar className={classes.toolbar}>
-                        <img src={logo} alt="logo" className={classes.logoRoot} />
-                        <Card className={classes.card}>
-                            <CardContent>
-                                <Typography variant="h6" className={classes.typography}>
-                                    Telefon: {phoneNumber}
-                                </Typography>
-                                <Typography variant="body2" className={classes.typography}>
-                                    Ta kontakt for synfaring og tilbod
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                        <IconButton>
-                            <FacebookIcon color="primary" />
-                        </IconButton>
-                        <Typography variant="h6" className={classes.title}>
-                            Meny
-                        </Typography>
-                        <MenuDrawer linkPaths={linkPaths} />
-                    </Toolbar>
-                    <Toolbar className={classes.toolbar}>
-                        <Slideshow />
-                    </Toolbar>
-                </Container>
-            </AppBar>
-
-        </div >
-    );
-
-    /*
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
+        <AppBar position="static" className={classes.appbar}>
+            <Container maxWidth="lg">
                 <Toolbar className={classes.toolbar}>
-                    {pages.linkPaths.map((path, index) => {
-                        return (
-                            <PageLinkButton
-                                key={index}
-                                path={path.path}
-                                name={path.name}
-                            />
-                        );
-                    })}
-                    <Typography variant="h6">
+                    <img src={logo} alt="logo" className={classes.logoRoot} />
+                    <Card className={classes.card}>
+                        <CardContent>
+                            <Typography variant="h6" className={classes.typography}>
+                                Telefon: {phoneNumber}
+                            </Typography>
+                            <Typography variant="body2" className={classes.typography}>
+                                Ta kontakt for synfaring og tilbod
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    <IconButton>
+                        <FacebookIcon color="primary" />
+                    </IconButton>
+                    <Typography variant="h6" className={classes.title}>
                         Meny
                     </Typography>
                     <MenuDrawer linkPaths={linkPaths} />
                 </Toolbar>
-            </AppBar>
-        </div >
+                <Toolbar className={classes.toolbar}>
+                    <Slideshow />
+                </Toolbar>
+            </Container>
+        </AppBar>
     );
-    */
-
 }
 
 export default Header;
