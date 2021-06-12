@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import logging from './config/logging';
 import routes from './config/routes';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -64,6 +65,8 @@ const App: React.FC<{}> = () => {
         </Route>
 
       </BrowserRouter>
+
+      <Footer />
     </div >
 
 

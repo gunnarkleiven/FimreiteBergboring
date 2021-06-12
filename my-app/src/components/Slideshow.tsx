@@ -57,7 +57,7 @@ type animation = "fade" | "slide"
 const Slideshow: React.FC = () => {
     const [settings, setSettings] = useState<SlideshowSettings>({
         autoPlay: true,
-        animation: "slide",
+        animation: "fade",
         indicators: true,
         timeout: 500,
         interval: 5000,

@@ -26,8 +26,12 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             flexGrow: 1,
         },
+        appbar: {
+            alignItems: "center",
+            backgroundColor: "black",
+        },
         menuButton: {
-            marginRight: theme.spacing(2),
+            marginLeft: theme.spacing(2),
         },
         title: {
             flexGrow: 1,
@@ -66,7 +70,7 @@ const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.appbar}>
                 <Toolbar className={classes.toolbar}>
                     <img src={logo} alt="logo" className={classes.logoRoot} />
                     <Card className={classes.card}>
