@@ -19,17 +19,21 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import logo from "../assets/Fimreite-logo-1.png";
 import FacebookIcon from '@material-ui/icons/Facebook';
+import Container from '@material-ui/core/Container';
+
 
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
+            backgroundColor: "black",
         },
+        /*
         appbar: {
             alignItems: "center",
             backgroundColor: "black",
-        },
+        }, */
         menuButton: {
             marginLeft: theme.spacing(2),
         },
@@ -37,8 +41,8 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
         },
         toolbar: {
-            justifyContent: 'space-between',
-            overflowX: 'auto',
+            //justifyContent: 'space-between',
+            //overflowX: 'auto',
             backgroundColor: "black",
         },
         logoRoot: {
@@ -66,35 +70,39 @@ const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
 
     const classes = useStyles();
 
-    const phoneNumber = "465 81 000"
+    const phoneNumber = "000 00 000"
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" className={classes.appbar}>
-                <Toolbar className={classes.toolbar}>
-                    <img src={logo} alt="logo" className={classes.logoRoot} />
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <Typography variant="h6" className={classes.typography}>
-                                Telefon: {phoneNumber}
-                            </Typography>
-                            <Typography variant="body2" className={classes.typography}>
-                                Ta kontakt for synfaring og tilbod
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                    <IconButton>
-                        <FacebookIcon color="primary" />
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        Meny
-                    </Typography>
-                    <MenuDrawer linkPaths={linkPaths} />
-                </Toolbar>
-                <Toolbar className={classes.toolbar}>
-                    <Slideshow />
-                </Toolbar>
+
+            <AppBar position="static" className={classes.root}>
+                <Container maxWidth="lg">
+                    <Toolbar className={classes.toolbar}>
+                        <img src={logo} alt="logo" className={classes.logoRoot} />
+                        <Card className={classes.card}>
+                            <CardContent>
+                                <Typography variant="h6" className={classes.typography}>
+                                    Telefon: {phoneNumber}
+                                </Typography>
+                                <Typography variant="body2" className={classes.typography}>
+                                    Ta kontakt for synfaring og tilbod
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                        <IconButton>
+                            <FacebookIcon color="primary" />
+                        </IconButton>
+                        <Typography variant="h6" className={classes.title}>
+                            Meny
+                        </Typography>
+                        <MenuDrawer linkPaths={linkPaths} />
+                    </Toolbar>
+                    <Toolbar className={classes.toolbar}>
+                        <Slideshow />
+                    </Toolbar>
+                </Container>
             </AppBar>
+
         </div >
     );
 

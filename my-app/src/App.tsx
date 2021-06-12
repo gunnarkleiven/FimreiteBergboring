@@ -13,8 +13,6 @@ import WaterPage from "./pages/WaterPage";
 import PiercingPage from "./pages/PiercingPage";
 import EnergywellPage from "./pages/EnergywellPage";
 import FundamentPage from "./pages/FundamentPage";
-import HeaderAsCard from './components/HeaderAsCard';
-
 
 export interface NameAndPath {
   path: string;
