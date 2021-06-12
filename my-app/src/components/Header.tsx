@@ -72,7 +72,6 @@ const Header: React.FunctionComponent<Props> = ({ linkPaths }) => {
     const phoneNumber = "000 00 000"
 
     return (
-
         <AppBar position="static" className={classes.appbar}>
             <Container maxWidth="lg">
                 <Toolbar className={classes.toolbar}>

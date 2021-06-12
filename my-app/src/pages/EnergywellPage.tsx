@@ -1,16 +1,33 @@
-import React from 'react'
+import React from 'react';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+
 
 interface EnergywellPageProps {
 
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            flexGrow: 1,
+        },
+    }),
+);
+
+
 const EnergywellPage: React.FC<EnergywellPageProps> = () => {
+    const classes = useStyles();
+
     return (
-        <p>
-            This is the Energywell page.
-            <br />
-            Under construction!
-        </p>
+        <div className={classes.root}>
+            <Container maxWidth="md">
+                <Typography variant="h6" align="center" paragraph>
+                    This is the page for Energy Well
+                </Typography>
+            </Container>
+        </div>
     );
 }
 
