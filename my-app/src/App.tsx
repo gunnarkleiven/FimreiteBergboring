@@ -7,7 +7,13 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Empty from './pages/Empty';
 import Home from './pages/Home';
+// Import the pages to be used in the categories cards
+import WaterPage from "./pages/WaterPage";
+import PiercingPage from "./pages/PiercingPage";
+import EnergywellPage from "./pages/EnergywellPage";
+import FundamentPage from "./pages/FundamentPage";
 import HeaderAsCard from './components/HeaderAsCard';
+
 
 export interface NameAndPath {
   path: string;
@@ -43,6 +49,20 @@ const App: React.FC<{}> = () => {
         <Route exact path="/about">
           <About />
         </Route>
+
+        <Route exact path="/water">
+          <WaterPage />
+        </Route>
+        <Route exact path="/piercing">
+          <PiercingPage />
+        </Route>
+        <Route exact path="/energywells">
+          <EnergywellPage />
+        </Route>
+        <Route exact path="/fundament">
+          <FundamentPage />
+        </Route>
+
       </BrowserRouter>
     </div >
 

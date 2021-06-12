@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 interface Props {
     path: string;
     name: string;
-    key: number;
+    displayPageName: boolean;
+    key?: number;
 }
 
 //const PageLinkButton: React.FunctionComponent<Props & RouteComponentProps<any>> = ({ path, name, key }) => {
-const PageLinkButton: React.FunctionComponent<Props> = ({ path, name }) => {
+const PageLinkButton: React.FunctionComponent<Props> = ({ path, name, displayPageName }) => {
     const [pagePath, setPagePath] = useState<string>(path);
     const [pageName, setPageName] = useState<string>(name);
     //const [buttonKey, setButtonKey] = useState<number>(key);
@@ -29,7 +30,7 @@ const PageLinkButton: React.FunctionComponent<Props> = ({ path, name }) => {
                 component={Link}
                 to={pagePath}
             >
-                {pageName}
+                {displayPageName ? pageName : "Les meir"}
             </Button>
         </div>
     );

@@ -22,7 +22,6 @@ import energywellImage from "../assets/energywell.jpeg";
 import fundamentImage from "../assets/fundament.jpeg";
 
 
-
 interface Props {
     pageName: string;
 }
@@ -63,25 +62,31 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
             name: "water",
             image: waterImage,
             header: "Boring etter vatn:",
-            text: "Boring etter vatn for vassforsyning til gardsbruk, bustadhus, hytter, bustadfelt osv."
+            text: "Boring etter vatn for vassforsyning til gardsbruk, bustadhus, hytter, bustadfelt osv.",
+            path: "/water/",
+
         },
         {
             name: "piercing",
             image: piercingImage,
             header: "Gjennomboring:",
-            text: "Gjennomboring av fjellknausar, kryssing av vegar, tomter og eksisterande bebyggelse.. Dette er eit rimleg og miljøvenleg alternativ til konvensjonelle grøfter."
+            text: "Gjennomboring av fjellknausar, kryssing av vegar, tomter og eksisterande bebyggelse.. Dette er eit rimleg og miljøvenleg alternativ til konvensjonelle grøfter.",
+            path: "/piercing/",
+
         },
         {
             name: "energywells",
             image: energywellImage,
             header: "Energibrønnar:",
-            text: "Boring av energibrønnar til varmepumper i bustadhus, dette er ei eingongsinvistering som gjer at du kan utnytte ein miljøvenleg og fornybar energiresurs."
+            text: "Boring av energibrønnar til varmepumper i bustadhus, dette er ei eingongsinvistering som gjer at du kan utnytte ein miljøvenleg og fornybar energiresurs.",
+            path: "/energywells/",
         },
         {
             name: "fundament",
             image: fundamentImage,
             header: "Fundamentering:",
-            text: "Fundamentering: Er ein teknikk som blir benytta der det er usikker grunn for etablering av bygg."
+            text: "Fundamentering: Er ein teknikk som blir benytta der det er usikker grunn for etablering av bygg.",
+            path: "/fundament/",
         }
     ]
 
@@ -89,6 +94,7 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
         <div className={classes.root}>
             <Container maxWidth="sm">
                 <Typography variant="h6" align="center" paragraph>
+                    <br />
                     Me er eit selskap med base i Sogndal som driv med bergboring, og starta våren 2014. Me er no 3 ansatte.
                     Arbeidsområdet er Sogn og Fjordane, Hordalang og Møre og Romsdal, men me er fleksible utover dette.
                     Eigar er Per Magne Fimreite.
@@ -96,27 +102,6 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
                 </Typography>
 
             </Container>
-
-            <Grid container spacing={4}>
-                <Grid item xs={12} sm={6}>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <Typography variant="h6">
-                                This is the first Card
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <Typography variant="h6">
-                                This is the second Card
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </Grid>
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={3}>
                     {categories.map((cat, idx) => {

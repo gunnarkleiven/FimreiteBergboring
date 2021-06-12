@@ -63,6 +63,7 @@ const MenuDrawerV2: React.FunctionComponent<Props> = ({ linkPaths }) => {
                             key={index}
                             path={path.path}
                             name={path.name}
+                            displayPageName={true}
                         />
                     );
                 })}
