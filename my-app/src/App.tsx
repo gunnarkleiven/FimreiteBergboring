@@ -4,7 +4,7 @@ import logging from './config/logging';
 import routes from './config/routes';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, } from 'react-router-dom';
 import About from './pages/About';
 import Services from './pages/Services';
 import Empty from './pages/Empty';

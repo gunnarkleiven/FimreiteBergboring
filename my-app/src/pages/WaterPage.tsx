@@ -23,7 +23,10 @@ const WaterPage: React.FC<WaterPageProps> = () => {
         <div className={classes.root}>
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
-                    This is the page for Water Drilling
+                    <br />
+                    Boring etter vatn
+                    <br />
+                    Denne sida er under konstruksjon
                 </Typography>
             </Container>
         </div>

@@ -23,7 +23,10 @@ const PiercingPage: React.FC<PiercingPageProps> = () => {
         <div className={classes.root}>
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
-                    This is the page for Piercing!
+                    <br />
+                    Gjennomboring
+                    <br />
+                    Denne sida er under konstruksjon
                 </Typography>
             </Container>
         </div>

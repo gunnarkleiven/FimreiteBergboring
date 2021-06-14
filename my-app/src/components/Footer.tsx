@@ -39,7 +39,7 @@ const Footer: React.FunctionComponent = () => {
             <Container maxWidth="sm">
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <Typography className={classes.typography} variant="h5" component="h2" align="center" gutterBottom>
+                        <Typography className={classes.typography} variant="h6" component="h2" align="center" gutterBottom>
                             BESØKSADRESSE:
                         </Typography>
                         <Typography className={classes.typography} variant="body2" component="p" align="center">

@@ -19,10 +19,6 @@ const PageLinkButton: React.FunctionComponent<Props> = ({ path, name, displayPag
         console.log(`Click to page ${pageName}`)
     }
 
-
-
-
-
     return (
         <div>
             <Button

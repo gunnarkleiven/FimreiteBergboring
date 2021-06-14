@@ -24,7 +24,10 @@ const EnergywellPage: React.FC<EnergywellPageProps> = () => {
         <div className={classes.root}>
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
-                    This is the page for Energy Well
+                    <br />
+                    Energibrønnar
+                    <br />
+                    Denne sida er under konstruksjon
                 </Typography>
             </Container>
         </div>

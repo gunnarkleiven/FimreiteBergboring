@@ -22,7 +22,10 @@ const FundamentPage: React.FC<FundamentPageProps> = () => {
         <div className={classes.root}>
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
-                    This is the page for the Fundament
+                    <br />
+                    Fundament
+                    <br />
+                    Denne sida er under konstruksjon
                 </Typography>
             </Container>
         </div>

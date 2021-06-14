@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Carousel from 'react-material-ui-carousel';
-import { Paper, Button } from '@material-ui/core';
 import image1 from '../assets/bilde1.jpeg';
 import image2 from '../assets/bilde2.jpeg';
 import image3 from '../assets/bilde3.jpeg';
 import image4 from '../assets/bilde4.jpeg';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
-import logo from "../assets/Fimreite-logo-1.png";
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
-import CircularProgress from '@material-ui/core/CircularProgress';
-
 
 
 
@@ -79,8 +72,8 @@ const Slideshow: React.FC = () => {
             image: image3,
         },
         {
-            name: "Picture 1",
-            image: image1,
+            name: "Picture 4",
+            image: image4,
         },
     ]);
 

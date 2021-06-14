@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { NameAndPath } from '../App';
-import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PageLinkButton from './PageLinkButton';
 
 
@@ -34,14 +27,13 @@ const MenuDrawerV2: React.FunctionComponent<Props> = ({ linkPaths }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDrawer = () => {
-        setIsOpen((prevState) => !prevState);
+        //setIsOpen((prevState) => !prevState);
+        setIsOpen(!isOpen);
     }
 
     const closeDrawer = () => {
         setIsOpen(false);
     }
-
-
 
     return (
         <div>

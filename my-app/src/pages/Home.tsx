@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
-import IPage from '../interfaces/page';
 import logging from '../config/logging';
-import { Link } from 'react-router-dom';
-import Header from '../components/Header';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import ICategory from '../interfaces/Category';
 
 import CategoryCard from '../components/CategoryCard';

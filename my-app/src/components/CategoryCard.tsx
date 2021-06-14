@@ -6,7 +6,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 
 import PageLinkButton from './PageLinkButton';
 import ICategory from "../interfaces/Category";
@@ -35,8 +34,6 @@ const useStyles = makeStyles({
 const CategoryCard: React.FunctionComponent<CategoryCardProps> = ({ cat }) => {
     const [category, setCategory] = useState<ICategory>(cat);
     const classes = useStyles();
-
-
 
     return (
         <Grid item xs={12} sm={6}>
