@@ -21,7 +21,7 @@ interface Props {
     linkPaths: NameAndPath[];
 }
 
-const MenuDrawerV2: React.FunctionComponent<Props> = ({ linkPaths }) => {
+const MenuDrawer: React.FunctionComponent<Props> = ({ linkPaths }) => {
     const classes = useStyles();
     const [pages, setPages] = useState<Props>({ linkPaths })
     const [isOpen, setIsOpen] = useState(false);
@@ -66,4 +66,4 @@ const MenuDrawerV2: React.FunctionComponent<Props> = ({ linkPaths }) => {
     );
 }
 
-export default MenuDrawerV2;
+export default MenuDrawer;
