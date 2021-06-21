@@ -22,7 +22,6 @@ const PageLinkButton: React.FunctionComponent<Props> = ({ path, name, displayPag
     return (
         <div>
             <Button
-                variant="contained"
                 component={Link}
                 to={pagePath}
             >
