@@ -13,6 +13,9 @@ import Container from '@material-ui/core/Container';
 import { CardActionArea } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import MenuListLinks from './MenuListLinks';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
         toolbar: {
             //justifyContent: 'space-between',
             //overflowX: 'auto',
-            backgroundColor: "#4a4e57",
+            backgroundColor: "##4a4e57",
         },
         logo: {
             //maxWidth: 345,
@@ -55,6 +58,8 @@ const useStyles = makeStyles((theme: Theme) =>
             minWidth: 275,
             backgroundColor: "#4a4e57",
             flex: 1,
+            border: "none",
+            boxShadow: "none",
         },
         typography: {
             color: "#FFFFFF",
@@ -104,6 +109,25 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
         }
     ]
 
+    const services: NameAndPath[] = [
+        {
+            name: "Boring etter vatn",
+            path: "/water/",
+        },
+        {
+            name: "Gjennomboring",
+            path: "/piercing/",
+        },
+        {
+            name: "Energibrønnar",
+            path: "/energywells/",
+        },
+        {
+            name: "Fundamentering",
+            path: "/fundament/",
+        },
+    ]
+
 
     const phoneNumber = "000 00 000"
 
@@ -122,16 +146,37 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
                         </CardActionArea>
                     </Card>
                     {buttonField.map((btn, idx) => {
-                        return (
-                            <Button
-                                key={idx}
-                                className={classes.button}
-                                component={Link}
-                                to={btn.path}
-                                size="large"
-                            >
-                                {btn.name}
-                            </Button>)
+                        if (btn.name === "Tjenester") {
+                            // return (
+                            //     <Button
+                            //         key={idx}
+                            //         className={classes.button}
+                            //         component={Link}
+                            //         to={btn.path}
+                            //         size="large"
+                            //         endIcon={<ArrowDropDownIcon />}
+                            //     >
+                            //         {btn.name}
+                            //     </Button>
+                            // );
+                            return (
+                                <MenuListLinks key={idx} btnName={btn.name} btnServices={services} />
+                            );
+                        }
+                        else {
+                            return (
+                                <Button
+                                    key={idx}
+                                    className={classes.button}
+                                    component={Link}
+                                    to={btn.path}
+                                    size="large"
+                                >
+                                    {btn.name}
+                                </Button>
+
+                            );
+                        }
                     })}
                 </Toolbar>
             </Container>
