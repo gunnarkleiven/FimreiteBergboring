@@ -73,7 +73,6 @@ const MenuListLinks: React.FunctionComponent<Props> = ({ btnName, btnServices })
                 <Button
                     ref={anchorRef}
                     className={classes.button}
-                    aria-controls={open ? 'menu-list-grow' : undefined}
                     aria-haspopup="true"
                     onClick={handleToggle}
                     size="large"
@@ -81,7 +80,7 @@ const MenuListLinks: React.FunctionComponent<Props> = ({ btnName, btnServices })
                 >
                     {name}
                 </Button>
-                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                <Popper open={open} anchorEl={anchorRef.current} transition disablePortal>
                     {({ TransitionProps, placement }) => (
                         <Grow
                             {...TransitionProps}
