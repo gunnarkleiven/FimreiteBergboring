@@ -22,6 +22,7 @@ const About: React.FC<AboutProps> = () => {
         <div className={classes.root}>
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
+                    <br />
                     This is the About Page!
                 </Typography>
             </Container>

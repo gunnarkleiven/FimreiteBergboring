@@ -25,6 +25,7 @@ const Empty: React.FC<EmptyProps> = () => {
         <div className={classes.root}>
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
+                    <br />
                     Empty page ¯\_(ツ)_/¯
                 </Typography>
             </Container>

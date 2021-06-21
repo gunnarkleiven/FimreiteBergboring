@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
 
-interface ServicesProps {
+interface ContactProps {
 
 }
 
@@ -16,7 +16,9 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const Services: React.FC<ServicesProps> = () => {
+
+const Contact: React.FC<ContactProps> = () => {
+
     const classes = useStyles();
 
     return (
@@ -24,7 +26,7 @@ const Services: React.FC<ServicesProps> = () => {
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
                     <br />
-                    These are our services
+                    This is the contact page
                 </Typography>
             </Container>
         </div>
@@ -32,4 +34,4 @@ const Services: React.FC<ServicesProps> = () => {
 }
 
 
-export default Services;
+export default Contact;
