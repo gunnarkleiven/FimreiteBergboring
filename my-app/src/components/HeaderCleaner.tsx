@@ -174,10 +174,15 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
                                 >
                                     {btn.name}
                                 </Button>
-
                             );
                         }
                     })}
+                    <Button
+                        component={Link}
+                        to={{ pathname: "https://www.facebook.com/Fimreitebergboring/" }}
+                        target="_blank"
+                        startIcon={<FacebookIcon style={{ fontSize: 40, color: "white" }} />}
+                    />
                 </Toolbar>
             </Container>
         </AppBar>

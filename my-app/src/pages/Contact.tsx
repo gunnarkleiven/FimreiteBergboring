@@ -76,7 +76,7 @@ const Contact: React.FC<ContactProps> = () => {
                     <Grid item xs={12}>
                         <Card className={classes.mediaCard}>
                             <CardMedia
-                                image={contactImage1}
+                                image={contactImage2}
                                 title={"Logo"}
                                 component="img"
                             />
