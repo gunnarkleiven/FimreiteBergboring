@@ -3,6 +3,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import GalleryComponent from '../components/GalleryComponent';
+import Grid from '@material-ui/core/Grid';
 
 // Manually importing all the pictures. This is definately not the best solution for all these pictures
 import picture1 from '../assets/picture1.jpeg';
@@ -15,6 +16,12 @@ import picture7 from '../assets/picture7.jpeg';
 import picture8 from '../assets/picture8.jpeg';
 import picture9 from '../assets/picture9.jpeg';
 import picture10 from '../assets/picture10.jpeg';
+import picture11 from '../assets/picture11.jpeg';
+import picture12 from '../assets/picture12.jpeg';
+import picture13 from '../assets/picture13.jpeg';
+import picture14 from '../assets/picture14.jpeg';
+import picture15 from '../assets/picture15.jpeg';
+
 
 
 interface GalleryProps {
@@ -31,6 +38,9 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             flexGrow: 1,
+        },
+        gridContainer: {
+            padding: theme.spacing(2),
         },
     }),
 );
@@ -101,17 +111,47 @@ const Gallery: React.FC<GalleryProps> = () => {
             alt: "picture10",
             hovered: false,
         },
+        {
+            source: picture11,
+            alt: "picture11",
+            hovered: false,
+        },
+        {
+            source: picture12,
+            alt: "picture12",
+            hovered: false,
+        },
+        {
+            source: picture13,
+            alt: "picture13",
+            hovered: false,
+        },
+        {
+            source: picture14,
+            alt: "picture14",
+            hovered: false,
+        },
+        {
+            source: picture15,
+            alt: "picture15",
+            hovered: false,
+        },
     ]
 
     return (
         <div className={classes.root}>
-            <Container maxWidth="md">
-                <Typography variant="h6" align="center" paragraph>
-                    <br />
-                    Galleri
-                    <br />
-                </Typography>
-                <GalleryComponent images={allImages} />
+            <Container maxWidth="lg">
+                <Grid
+                    container
+                    className={classes.gridContainer}
+                    direction="row"
+                    justify="center"
+                    spacing={3}
+                >
+                    <Grid item xs={12}>
+                        <GalleryComponent images={allImages} />
+                    </Grid>
+                </Grid>
             </Container>
         </div>
     );

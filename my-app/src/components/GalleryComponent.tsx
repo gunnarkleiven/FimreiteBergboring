@@ -3,10 +3,9 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import { ImageInImageGallery } from '../pages/Gallery';
-import testImage from '../assets/picture1.jpeg'
-
-
-
+import GalleryDialog from '../components/GalleryDialog';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -39,6 +38,9 @@ interface Props {
 const GalleryComponent: React.FC<Props> = ({ images }) => {
     const [allImages, setAllImages] = useState<ImageInImageGallery[]>(images);
     // const [allImages, setAllImages] = useState<string[]>(images);
+
+    const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+    const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
     const classes = useStyles();
 
@@ -73,12 +75,25 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
             }));
     }
 
-    const handleClick = (idx: number) => {
+    const handleClick = (image: ImageInImageGallery, idx: number) => {
         console.log(`Clicked picture ${idx}`);
+        setDialogOpen(true);
+        setSelectedImageIndex(idx);
     }
+
+    const handleClickOpenDialog = () => {
+        setDialogOpen(true);
+    }
+
+    const handleCloseDialog = (value: number) => {
+        setDialogOpen(false);
+        setSelectedImageIndex(value);
+    }
+
 
     return (
         <div className={classes.root}>
+            <GalleryDialog allImages={allImages} selectedImageIndex={selectedImageIndex} open={dialogOpen} onClose={handleCloseDialog} />
             <GridList cellHeight={160} className={classes.gridList} cols={3}>
                 {allImages.map((image, idx) => {
                     return (
@@ -88,7 +103,7 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
                                 alt={image.alt}
                                 onMouseOver={() => handleMouseOver(idx)}
                                 onMouseOut={() => handleMouseOut(idx)}
-                                onClick={() => handleClick(idx)}
+                                onClick={() => handleClick(image, idx)}
                                 style={{
                                     //transform: allImages[idx].hovered ? 'scale(1.2)' : undefined,
                                     // filter: allImages[idx].hovered ? 'grayscale(80%)' : undefined,
