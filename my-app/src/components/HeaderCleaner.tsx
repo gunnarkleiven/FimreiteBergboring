@@ -97,7 +97,7 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
         },
         {
             name: "Galleri",
-            path: "/empty/"
+            path: "/gallery/"
         },
         {
             name: "Om oss",
@@ -178,6 +178,8 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
                         }
                     })}
                     <Button
+                        // TODO enable this button
+                        disabled={true}
                         component={Link}
                         to={{ pathname: "https://www.facebook.com/Fimreitebergboring/" }}
                         target="_blank"

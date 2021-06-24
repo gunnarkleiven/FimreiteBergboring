@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import { BrowserRouter, Route, } from 'react-router-dom';
 import About from './pages/About';
 import Services from './pages/Services';
-import Empty from './pages/Empty';
+import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 // Import the pages to be used in the categories cards
@@ -57,8 +57,8 @@ const App: React.FC<{}> = () => {
         <Route exact path="/services">
           <Services />
         </Route>
-        <Route exact path="/empty">
-          <Empty />
+        <Route exact path="/gallery">
+          <Gallery />
         </Route>
         <Route exact path="/about">
           <About />

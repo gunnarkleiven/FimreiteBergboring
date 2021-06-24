@@ -53,7 +53,8 @@ const About: React.FC<AboutProps> = () => {
                             Eigar er Per Magne Fimreite.
                             <br />
                             <br />
-                            <br />
+                        </Typography>
+                        <Typography variant="h6" align="center">
                             Me tilbyr tenester til konkurransedyktige prisar innan:
                         </Typography>
                         <Typography variant="body1" paragraph>

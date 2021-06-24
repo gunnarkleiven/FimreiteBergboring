@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         card: {
             minWidth: 275,
+            border: "none",
+            boxShadow: "none",
         },
         mediaCard: {
             //maxWidth: 900,
@@ -122,10 +124,10 @@ const Contact: React.FC<ContactProps> = () => {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <Card>
+                        <Card className={classes.card}>
                             <CardContent>
                                 <Typography variant="h6" align="center">
-                                    This is the second card
+                                    Here comes the possibilty to leave a message
                                 </Typography>
                             </CardContent>
                         </Card>

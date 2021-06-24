@@ -1,7 +1,7 @@
 import IRoute from '../interfaces/route';
 import About from '../pages/About';
 import Services from '../pages/Services';
-import Empty from '../pages/Empty';
+import Gallery from '../pages/Gallery';
 import HomePage from '../pages/Home';
 
 const routes: IRoute[] = [
@@ -18,9 +18,9 @@ const routes: IRoute[] = [
         exact: true,
     },
     {
-        path: '/empty/',
-        name: 'Empty',
-        component: Empty,
+        path: '/gallery/',
+        name: 'Gallery',
+        component: Gallery,
         exact: true,
     },
     {
