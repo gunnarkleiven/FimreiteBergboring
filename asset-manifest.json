@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.js": "/FimreiteBergboring/static/js/main.24328c80.chunk.js",
+    "main.js.map": "/FimreiteBergboring/static/js/main.24328c80.chunk.js.map",
+    "runtime-main.js": "/FimreiteBergboring/static/js/runtime-main.22973785.js",
+    "runtime-main.js.map": "/FimreiteBergboring/static/js/runtime-main.22973785.js.map",
+    "static/js/2.4fe684e7.chunk.js": "/FimreiteBergboring/static/js/2.4fe684e7.chunk.js",
+    "static/js/2.4fe684e7.chunk.js.map": "/FimreiteBergboring/static/js/2.4fe684e7.chunk.js.map",
+    "static/js/3.d601ce2b.chunk.js": "/FimreiteBergboring/static/js/3.d601ce2b.chunk.js",
+    "static/js/3.d601ce2b.chunk.js.map": "/FimreiteBergboring/static/js/3.d601ce2b.chunk.js.map",
+    "index.html": "/FimreiteBergboring/index.html",
+    "static/js/2.4fe684e7.chunk.js.LICENSE.txt": "/FimreiteBergboring/static/js/2.4fe684e7.chunk.js.LICENSE.txt",
+    "static/media/Fimreite-logo-1.96d3bd13.png": "/FimreiteBergboring/static/media/Fimreite-logo-1.96d3bd13.png",
+    "static/media/energywell.79d11c0d.jpeg": "/FimreiteBergboring/static/media/energywell.79d11c0d.jpeg",
+    "static/media/fundament.80d0d44c.jpeg": "/FimreiteBergboring/static/media/fundament.80d0d44c.jpeg",
+    "static/media/likeAWallpaper.ae3e696d.jpeg": "/FimreiteBergboring/static/media/likeAWallpaper.ae3e696d.jpeg",
+    "static/media/likeAWallpaper2.f4eae73f.png": "/FimreiteBergboring/static/media/likeAWallpaper2.f4eae73f.png",
+    "static/media/picture1.e3feb159.jpeg": "/FimreiteBergboring/static/media/picture1.e3feb159.jpeg",
+    "static/media/picture10.6b2fbbd7.jpeg": "/FimreiteBergboring/static/media/picture10.6b2fbbd7.jpeg",
+    "static/media/picture11.76cf4e58.jpeg": "/FimreiteBergboring/static/media/picture11.76cf4e58.jpeg",
+    "static/media/picture12.0579e5c0.jpeg": "/FimreiteBergboring/static/media/picture12.0579e5c0.jpeg",
+    "static/media/picture13.72c39f3d.jpeg": "/FimreiteBergboring/static/media/picture13.72c39f3d.jpeg",
+    "static/media/picture14.d35f6b58.jpeg": "/FimreiteBergboring/static/media/picture14.d35f6b58.jpeg",
+    "static/media/picture15.cbf5e563.jpeg": "/FimreiteBergboring/static/media/picture15.cbf5e563.jpeg",
+    "static/media/picture2.0c6aad6f.jpeg": "/FimreiteBergboring/static/media/picture2.0c6aad6f.jpeg",
+    "static/media/picture3.c448afd2.jpeg": "/FimreiteBergboring/static/media/picture3.c448afd2.jpeg",
+    "static/media/picture4.55c58a68.jpeg": "/FimreiteBergboring/static/media/picture4.55c58a68.jpeg",
+    "static/media/picture5.7e894138.jpeg": "/FimreiteBergboring/static/media/picture5.7e894138.jpeg",
+    "static/media/picture6.50d9cd2f.jpeg": "/FimreiteBergboring/static/media/picture6.50d9cd2f.jpeg",
+    "static/media/picture7.93d4c56a.jpeg": "/FimreiteBergboring/static/media/picture7.93d4c56a.jpeg",
+    "static/media/picture8.bd621dd9.jpeg": "/FimreiteBergboring/static/media/picture8.bd621dd9.jpeg",
+    "static/media/picture9.95007c8c.jpeg": "/FimreiteBergboring/static/media/picture9.95007c8c.jpeg",
+    "static/media/piercing.137e1e79.jpeg": "/FimreiteBergboring/static/media/piercing.137e1e79.jpeg",
+    "static/media/water.33ede4cf.jpeg": "/FimreiteBergboring/static/media/water.33ede4cf.jpeg",
+    "static/media/withNature.0c6aad6f.jpeg": "/FimreiteBergboring/static/media/withNature.0c6aad6f.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.22973785.js",
+    "static/js/2.4fe684e7.chunk.js",
+    "static/js/main.24328c80.chunk.js"
+  ]
+}
