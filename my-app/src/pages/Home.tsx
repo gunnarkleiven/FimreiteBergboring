@@ -89,7 +89,7 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
                 <Typography variant="h6" align="center" paragraph>
                     <br />
                     Me er eit selskap med base i Sogndal som driv med bergboring, og starta våren 2014. Me er no 3 ansatte.
-                    Arbeidsområdet er Sogn og Fjordane, Hordalang og Møre og Romsdal, men me er fleksible utover dette.
+                    Arbeidsområdet er Sogn og Fjordane, Hordaland og Møre og Romsdal, men me er fleksible utover dette.
                     <br />
                     Eigar er Per Magne Fimreite.
                     <br />

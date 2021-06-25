@@ -23,6 +23,7 @@ const Services: React.FC<ServicesProps> = () => {
         <div className={classes.root}>
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
+                    <br />
                     These are our services
                 </Typography>
             </Container>

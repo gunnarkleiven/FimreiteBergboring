@@ -14,11 +14,11 @@ const useStyles = makeStyles((theme: Theme) =>
             flexDirection: "column",
         },
         footer: {
-            backgroundColor: "black",
+            backgroundColor: "#4a4e57",
             padding: theme.spacing(6, 0),
         },
         container: {
-            backgroundColor: "black",
+            backgroundColor: "#4a4e57",
             alignItems: "flex-end",
         },
         typography: {
