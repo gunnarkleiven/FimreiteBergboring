@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +16,8 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuListLinks from './MenuListLinks';
+import Typography from '@material-ui/core/Typography';
+import MenuDrawer from '../components/MenuDrawer';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -54,6 +56,13 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingBottom: '30px',
             flex: 1,
         },
+        mediaMobile: {
+            height: 66,
+            width: 200,
+            paddingTop: '20px',
+            paddingBottom: '20px',
+            flex: 1,
+        },
         card: {
             minWidth: 275,
             backgroundColor: "#4a4e57",
@@ -83,6 +92,25 @@ interface HeaderButtonField {
 
 const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
     // const [pages, setPages] = useState<Props>({ linkPaths });
+
+    const [mobileView, setMobileView] = useState<boolean>(false);
+    const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        const setResponsiveness = () => {
+            return window.innerWidth < 1050 ? setMobileView(true) : setMobileView(false);
+        };
+
+
+        setResponsiveness();
+        window.addEventListener("resize", () => setResponsiveness());
+
+        return () => {
+            window.removeEventListener("resize", () => setResponsiveness());
+        }
+
+    }, []);
+
 
     const classes = useStyles();
 
@@ -131,64 +159,89 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
 
     const phoneNumber = "000 00 000"
 
+    const displayDesktop = () => {
+
+        return (
+            <Toolbar className={classes.toolbar}>
+                <Card className={classes.card}>
+                    <CardActionArea component={Link} to={process.env.PUBLIC_URL + '/'}>
+                        <CardMedia
+                            className={classes.media}
+                            image={logo}
+                            title={"Logo"}
+                            component="img"
+                        />
+                    </CardActionArea>
+                </Card>
+                {buttonField.map((btn, idx) => {
+                    if (btn.name === "Tjenester") {
+
+                        return (
+                            <MenuListLinks key={idx} btnName={btn.name} btnServices={services} />
+                        );
+                    }
+                    else {
+                        return (
+                            <Button
+                                key={idx}
+                                className={classes.button}
+                                component={Link}
+                                to={btn.path}
+                                size="large"
+                            >
+                                {btn.name}
+                            </Button>
+                        );
+                    }
+                })}
+                <Button
+                    // TODO enable this button
+                    disabled={true}
+                    component={Link}
+                    to={{ pathname: "https://www.facebook.com/Fimreitebergboring/" }}
+                    target="_blank"
+                    startIcon={<FacebookIcon style={{ fontSize: 40, color: "white" }} />}
+                />
+            </Toolbar>
+        );
+    }
+
+    const displayMobile = () => {
+        return (
+            <Toolbar className={classes.toolbar}>
+                {/* <Typography variant="h6">
+                    This is the mobile view
+                </Typography> */}
+                <Card className={classes.card}>
+                    <CardActionArea component={Link} to={process.env.PUBLIC_URL + '/'}>
+                        <CardMedia
+                            className={classes.mediaMobile}
+                            image={logo}
+                            title={"Logo"}
+                            component="img"
+                        />
+                    </CardActionArea>
+                </Card>
+
+                <Typography variant="h6">
+                    Meny
+                </Typography>
+
+                <MenuDrawer linkPaths={buttonField} />
+            </Toolbar >
+
+        );
+    }
+
     return (
-        <AppBar position="static" className={classes.appbar}>
-            <Container maxWidth="lg">
-                <Toolbar className={classes.toolbar}>
-                    <Card className={classes.card}>
-                        <CardActionArea component={Link} to={process.env.PUBLIC_URL + '/'}>
-                            <CardMedia
-                                className={classes.media}
-                                image={logo}
-                                title={"Logo"}
-                                component="img"
-                            />
-                        </CardActionArea>
-                    </Card>
-                    {buttonField.map((btn, idx) => {
-                        if (btn.name === "Tjenester") {
-                            // return (
-                            //     <Button
-                            //         key={idx}
-                            //         className={classes.button}
-                            //         component={Link}
-                            //         to={btn.path}
-                            //         size="large"
-                            //         endIcon={<ArrowDropDownIcon />}
-                            //     >
-                            //         {btn.name}
-                            //     </Button>
-                            // );
-                            return (
-                                <MenuListLinks key={idx} btnName={btn.name} btnServices={services} />
-                            );
-                        }
-                        else {
-                            return (
-                                <Button
-                                    key={idx}
-                                    className={classes.button}
-                                    component={Link}
-                                    to={btn.path}
-                                    size="large"
-                                >
-                                    {btn.name}
-                                </Button>
-                            );
-                        }
-                    })}
-                    <Button
-                        // TODO enable this button
-                        disabled={true}
-                        component={Link}
-                        to={{ pathname: "https://www.facebook.com/Fimreitebergboring/" }}
-                        target="_blank"
-                        startIcon={<FacebookIcon style={{ fontSize: 40, color: "white" }} />}
-                    />
-                </Toolbar>
-            </Container>
-        </AppBar>
-    );
+        <header>
+            <AppBar position="static" className={classes.appbar}>
+                <Container maxWidth="lg">
+                    {mobileView ? displayMobile() : displayDesktop()}
+                </Container>
+            </AppBar>
+        </header>
+    )
 }
 
 export default HeaderCleaner;

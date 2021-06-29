@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import { NameAndPath } from '../App';
@@ -8,14 +8,19 @@ import MenuIcon from '@material-ui/icons/Menu';
 import PageLinkButton from './PageLinkButton';
 
 
-const useStyles = makeStyles({
-    list: {
-        width: 250,
-    },
-    fullList: {
-        width: 'auto',
-    },
-});
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        list: {
+            width: 250,
+        },
+        fullList: {
+            width: 'auto',
+        },
+        menuButton: {
+            marginLeft: theme.spacing(2),
+        },
+    })
+);
 
 interface Props {
     linkPaths: NameAndPath[];
@@ -38,7 +43,7 @@ const MenuDrawer: React.FunctionComponent<Props> = ({ linkPaths }) => {
     return (
         <div>
             <div>
-                <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer}>
+                <IconButton className={classes.menuButton} edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer}>
                     <MenuIcon />
                 </IconButton>
             </div>
