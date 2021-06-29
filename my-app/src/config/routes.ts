@@ -6,7 +6,7 @@ import HomePage from '../pages/Home';
 
 const routes: IRoute[] = [
     {
-        path: '/',
+        path: process.env.PUBLIC_URL + '/',
         name: 'Home',
         component: HomePage,
         exact: true,

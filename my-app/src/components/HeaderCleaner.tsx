@@ -89,7 +89,7 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
     const buttonField: HeaderButtonField[] = [
         {
             name: "Hovedside",
-            path: "/"
+            path: process.env.PUBLIC_URL + '/'
         },
         {
             name: "Tjenester",
@@ -136,7 +136,7 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
             <Container maxWidth="lg">
                 <Toolbar className={classes.toolbar}>
                     <Card className={classes.card}>
-                        <CardActionArea component={Link} to="/">
+                        <CardActionArea component={Link} to={process.env.PUBLIC_URL + '/'}>
                             <CardMedia
                                 className={classes.media}
                                 image={logo}
