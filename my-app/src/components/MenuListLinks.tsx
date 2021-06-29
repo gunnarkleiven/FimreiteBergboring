@@ -80,7 +80,7 @@ const MenuListLinks: React.FunctionComponent<Props> = ({ btnName, btnServices })
                 >
                     {name}
                 </Button>
-                <Popper open={open} anchorEl={anchorRef.current} transition disablePortal>
+                <Popper open={open} anchorEl={anchorRef.current} transition>
                     {({ TransitionProps, placement }) => (
                         <Grow
                             {...TransitionProps}

@@ -57,14 +57,21 @@ const useStyles = makeStyles((theme: Theme) =>
             flex: 1,
         },
         mediaMobile: {
-            height: 66,
-            width: 200,
-            paddingTop: '20px',
-            paddingBottom: '20px',
+            height: 50,
+            width: 150,
+            paddingTop: '15px',
+            paddingBottom: '15px',
             flex: 1,
         },
         card: {
             minWidth: 275,
+            backgroundColor: "#4a4e57",
+            flex: 1,
+            border: "none",
+            boxShadow: "none",
+        },
+        cardMobile: {
+            minWidth: 175,
             backgroundColor: "#4a4e57",
             flex: 1,
             border: "none",
@@ -212,7 +219,7 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
                 {/* <Typography variant="h6">
                     This is the mobile view
                 </Typography> */}
-                <Card className={classes.card}>
+                <Card className={classes.cardMobile}>
                     <CardActionArea component={Link} to={process.env.PUBLIC_URL + '/'}>
                         <CardMedia
                             className={classes.mediaMobile}
