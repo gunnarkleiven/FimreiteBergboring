@@ -51,7 +51,7 @@ const App: React.FC<{}> = () => {
     <div className={classes.root}>
       <BrowserRouter>
         <HeaderCleaner linkPaths={allPaths} />
-        <Route exact path="/">
+        <Route exact path={process.env.PUBLIC_URL + '/'}>
           <Home pageName="This is the home page" />
         </Route>
         <Route exact path="/services">
