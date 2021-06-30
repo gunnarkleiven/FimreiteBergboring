@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme, useTheme, createStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
@@ -24,6 +24,10 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { ImageInImageGallery } from "../pages/Gallery";
 
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import MobileStepper from '@material-ui/core/MobileStepper';
+
 const useStyles = makeStyles({
     root: {
         // display: 'flex',
@@ -33,7 +37,16 @@ const useStyles = makeStyles({
         display: "flex",
         flexDirection: "column",
     },
-    media: {},
+    media: {
+
+    },
+    img: {
+        //height: 300,
+        //maxWidth: 600,
+        overflow: 'hidden',
+        display: 'block',
+        width: '100%',
+    },
 });
 
 interface Props {
@@ -47,6 +60,8 @@ interface Props {
 
 const GalleryDialog: React.FC<Props> = (props: Props) => {
     const classes = useStyles();
+    const theme = useTheme();
+
     // const { onClose, allImages, selectedImageIndex, open } = props;
     const onClose = props.onClose;
     const allImages = props.allImages;
@@ -93,29 +108,7 @@ const GalleryDialog: React.FC<Props> = (props: Props) => {
             aria-labelledby="simple-dialog-title"
             open={open}
         >
-            {/* <DialogTitle id="simple-dialog-title">This is a picture.</DialogTitle> */}
-            {/* <List>
-                {emails.map((email) => (
-                    <ListItem button onClick={() => handleListItemClick(email)} key={email}>
-                        <ListItemAvatar>
-                            <Avatar className={classes.avatar}>
-                                <PersonIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText primary={email} />
-                    </ListItem>
-                ))}
-                <ListItem autoFocus button onClick={() => handleListItemClick('addAccount')}>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <AddIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Add account" />
-                </ListItem>
-            </List> */}
-
-            <Grid container direction="row" justify="center" alignItems="center">
+            {/* <Grid container direction="row" justify="center" alignItems="center">
                 <Grid item xs={1}>
                     <IconButton aria-label="prev" onClick={handleOnClickPrev}>
                         <ArrowBackIosIcon />
@@ -135,7 +128,31 @@ const GalleryDialog: React.FC<Props> = (props: Props) => {
                         <ArrowForwardIosIcon />
                     </IconButton>
                 </Grid>
-            </Grid>
+            </Grid> */}
+            <img
+                className={classes.img}
+                src={allImages[getIndexCallbackFunction()].source}
+                alt={allImages[getIndexCallbackFunction()].alt}
+            />
+            <MobileStepper
+                steps={allImages.length}
+                position="static"
+                variant="text"
+                activeStep={getIndexCallbackFunction()}
+                nextButton={
+                    <Button size="small" onClick={handleOnClickNext}>
+                        Neste
+                        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                    </Button>
+                }
+                backButton={
+                    <Button size="small" onClick={handleOnClickPrev}>
+                        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                        Forrige
+                    </Button>
+                }
+            />
+
         </Dialog>
     );
 };
