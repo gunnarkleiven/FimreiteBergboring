@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
@@ -25,60 +25,76 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { ImageInImageGallery } from "../pages/Gallery";
 
 const useStyles = makeStyles({
-  root: {
-    // display: 'flex',
-    // flexDirection: 'row',
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  media: {},
+    root: {
+        // display: 'flex',
+        // flexDirection: 'row',
+    },
+    details: {
+        display: "flex",
+        flexDirection: "column",
+    },
+    media: {},
 });
 
 interface Props {
-  open: boolean;
-  allImages: ImageInImageGallery[];
-  selectedImageIndex: number;
-  onClose: (value: number) => void;
+    open: boolean;
+    allImages: ImageInImageGallery[];
+    selectedImageIndex?: number;
+    onClose: (value: number) => void;
+    getSelectedImageIndex: () => number;
+    changeImageIndex: (newIndex: number) => void;
 }
 
 const GalleryDialog: React.FC<Props> = (props: Props) => {
-  const classes = useStyles();
-  const { onClose, allImages, selectedImageIndex, open } = props;
-  const [currentImageIndex, setCurrentImageIndex] =
-    useState<number>(selectedImageIndex);
+    const classes = useStyles();
+    // const { onClose, allImages, selectedImageIndex, open } = props;
+    const onClose = props.onClose;
+    const allImages = props.allImages;
+    const open = props.open;
+    // const [currentImageIndex, setCurrentImageIndex] = useState<number>(props.selectedImageIndex);
 
-  const handleClose = () => {
-    onClose(selectedImageIndex);
-  };
+    const getIndexCallbackFunction = props.getSelectedImageIndex;
+    const changeImageIndexCallbackFunction = props.changeImageIndex;
 
-  const handleListItemClick = (value: number) => {
-    onClose(value);
-  };
+    const handleClose = () => {
+        // onClose(currentImageIndex);
+        onClose(getIndexCallbackFunction());
+    };
 
-  const handleOnClickPrev = () => {
-    // console.log("Clicked PREV");
-    setCurrentImageIndex(
-      currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1
-    );
-  };
+    const handleListItemClick = (value: number) => {
+        onClose(value);
+    };
 
-  const handleOnClickNext = () => {
-    // console.log("Clicked NEXT");
-    setCurrentImageIndex(
-      currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0
-    );
-  };
+    const handleOnClickPrev = () => {
+        // console.log("Clicked PREV");
+        // setCurrentImageIndex(
+        //     currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1
+        // );
+        const currentIndex = getIndexCallbackFunction();
+        changeImageIndexCallbackFunction(
+            currentIndex > 0 ? currentIndex - 1 : allImages.length - 1
+        );
+    };
 
-  return (
-    <Dialog
-      onClose={handleClose}
-      aria-labelledby="simple-dialog-title"
-      open={open}
-    >
-      {/* <DialogTitle id="simple-dialog-title">This is a picture.</DialogTitle> */}
-      {/* <List>
+    const handleOnClickNext = () => {
+        // console.log("Clicked NEXT");
+        // setCurrentImageIndex(
+        //     currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0
+        // );
+        const currentIndex = getIndexCallbackFunction();
+        changeImageIndexCallbackFunction(
+            currentIndex < allImages.length - 1 ? currentIndex + 1 : 0
+        );
+    };
+
+    return (
+        <Dialog
+            onClose={handleClose}
+            aria-labelledby="simple-dialog-title"
+            open={open}
+        >
+            {/* <DialogTitle id="simple-dialog-title">This is a picture.</DialogTitle> */}
+            {/* <List>
                 {emails.map((email) => (
                     <ListItem button onClick={() => handleListItemClick(email)} key={email}>
                         <ListItemAvatar>
@@ -99,29 +115,29 @@ const GalleryDialog: React.FC<Props> = (props: Props) => {
                 </ListItem>
             </List> */}
 
-      <Grid container direction="row" justify="center" alignItems="center">
-        <Grid item xs={1}>
-          <IconButton aria-label="prev" onClick={handleOnClickPrev}>
-            <ArrowBackIosIcon />
-          </IconButton>
-        </Grid>
-        <Grid item xs={10}>
-          <Card className={classes.root}>
-            <CardMedia
-              className={classes.media}
-              image={allImages[currentImageIndex].source}
-              component="img"
-            />
-          </Card>
-        </Grid>
-        <Grid item xs={1}>
-          <IconButton aria-label="next" onClick={handleOnClickNext}>
-            <ArrowForwardIosIcon />
-          </IconButton>
-        </Grid>
-      </Grid>
-    </Dialog>
-  );
+            <Grid container direction="row" justify="center" alignItems="center">
+                <Grid item xs={1}>
+                    <IconButton aria-label="prev" onClick={handleOnClickPrev}>
+                        <ArrowBackIosIcon />
+                    </IconButton>
+                </Grid>
+                <Grid item xs={10}>
+                    <Card className={classes.root}>
+                        <CardMedia
+                            className={classes.media}
+                            image={allImages[getIndexCallbackFunction()].source}
+                            component="img"
+                        />
+                    </Card>
+                </Grid>
+                <Grid item xs={1}>
+                    <IconButton aria-label="next" onClick={handleOnClickNext}>
+                        <ArrowForwardIosIcon />
+                    </IconButton>
+                </Grid>
+            </Grid>
+        </Dialog>
+    );
 };
 
 export default GalleryDialog;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -40,7 +40,7 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
     // const [allImages, setAllImages] = useState<string[]>(images);
 
     const [dialogOpen, setDialogOpen] = useState<boolean>(false);
-    const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+    const [selectedImageIndex, setSelectedImageIndex] = useState<number>(1);
 
     const classes = useStyles();
 
@@ -76,9 +76,11 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
     }
 
     const handleClick = (image: ImageInImageGallery, idx: number) => {
-        console.log(`Clicked picture ${idx}`);
-        setDialogOpen(true);
+        // console.log(`Clicked picture ${idx}`);
+        // console.log(`Before: ${selectedImageIndex}`);
         setSelectedImageIndex(idx);
+        // console.log(`After: ${selectedImageIndex}`);
+        setDialogOpen(true);
     }
 
     const handleClickOpenDialog = () => {
@@ -90,10 +92,18 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
         setSelectedImageIndex(value);
     }
 
+    const changeImageIndex = (newIndex: number) => {
+        setSelectedImageIndex(newIndex);
+    }
+
+    // This function is to be called from the GalleryDialog component
+    const getSelectedImageIndex = () => {
+        return selectedImageIndex;
+    }
 
     return (
         <div className={classes.root}>
-            <GalleryDialog allImages={allImages} selectedImageIndex={selectedImageIndex} open={dialogOpen} onClose={handleCloseDialog} />
+            <GalleryDialog allImages={allImages} getSelectedImageIndex={getSelectedImageIndex} changeImageIndex={changeImageIndex} open={dialogOpen} onClose={handleCloseDialog} />
             <GridList cellHeight={160} className={classes.gridList} cols={3}>
                 {allImages.map((image, idx) => {
                     return (
