@@ -24,7 +24,7 @@ const Services: React.FC<ServicesProps> = () => {
             <Container maxWidth="md">
                 <Typography variant="h6" align="center" paragraph>
                     <br />
-                    These are our services
+                    Tjenester
                 </Typography>
             </Container>
         </div>

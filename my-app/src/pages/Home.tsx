@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import logging from '../config/logging';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme, createMuiTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -41,6 +41,10 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
+
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
+
 
 
 const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
@@ -86,15 +90,17 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
     return (
         <div className={classes.root}>
             <Container maxWidth="sm">
-                <Typography variant="h6" align="center" paragraph>
-                    <br />
-                    Me er eit selskap med base i Sogndal som driv med bergboring, og starta våren 2014. Me er no 3 ansatte.
-                    Arbeidsområdet er Sogn og Fjordane, Hordaland og Møre og Romsdal, men me er fleksible utover dette.
-                    <br />
-                    Eigar er Per Magne Fimreite.
-                    <br />
-                    Me tilbyr tenester til konkurransedyktige prisar innan:
-                </Typography>
+                <ThemeProvider theme={theme}>
+                    <Typography variant="h6" align="center" paragraph>
+                        <br />
+                        Me er eit selskap med base i Sogndal som driv med bergboring, og starta våren 2014. Me er no 3 ansatte.
+                        Arbeidsområdet er Sogn og Fjordane, Hordaland og Møre og Romsdal, men me er fleksible utover dette.
+                        <br />
+                        Eigar er Per Magne Fimreite.
+                        <br />
+                        Me tilbyr tenester til konkurransedyktige prisar innan:
+                    </Typography>
+                </ThemeProvider>
 
             </Container>
             <Container className={classes.cardGrid} maxWidth="md">
