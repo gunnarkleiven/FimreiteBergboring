@@ -5,7 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import EmailIcon from '@material-ui/icons/Email';
-import { setegid } from 'process';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 interface Props {
 
@@ -19,9 +21,18 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
+
+interface CompleteMessage {
+    nameInput: string;
+    phonenumberInput: string;
+    companyInput: string;
+    emailInput: string;
+    messageInput: string;
+}
+
+
 const MessageForm: React.FC<Props> = () => {
     const classes = useStyles();
-
     // States for the different forms
     const [name, setName] = useState<string>("");
     const [phonenumber, setPhonenumber] = useState<string>("");
@@ -29,13 +40,43 @@ const MessageForm: React.FC<Props> = () => {
     const [email, setEmail] = useState<string>("");
     const [message, setMessage] = useState<string>("");
 
+    const [completeMessage, setCompleteMessage] = useState<CompleteMessage>({
+        nameInput: "",
+        phonenumberInput: "",
+        companyInput: "",
+        emailInput: "",
+        messageInput: "",
+    });
+
+    const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
+
     const handleSubmit = () => {
-        console.log(
+        /* console.log(
             `Submitted\nNavn: ${name}, Telefon: ${phonenumber}
             Firma:: ${company}
             Epost: ${email}
             Message: ${message}`
-        );
+        ); */
+
+        console.log(completeMessage);
+
+        setOpenSnackbar(true);
+    }
+
+    const handleSnackbarClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpenSnackbar(false);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        const newValue = e.target.value;
+        const category = e.target.id;
+
+        setCompleteMessage(prevState => {
+            return { ...prevState, [category]: newValue }
+        });
     }
 
     return (
@@ -48,32 +89,36 @@ const MessageForm: React.FC<Props> = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        id="name-input"
+                        id="nameInput"
                         label="Navn"
-                        onChange={(e) => setName(e.target.value)}
+                        // onChange={(e) => setName(e.target.value)}
+                        onChange={handleChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        id="phonenumber-input"
+                        id="phonenumberInput"
                         label="Telefon"
-                        onChange={(e) => setPhonenumber(e.target.value)}
+                        // onChange={(e) => setPhonenumber(e.target.value)}
+                        onChange={handleChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
-                        id="company-input"
+                        id="companyInput"
                         label="Firma"
                         fullWidth
-                        onChange={(e) => setCompany(e.target.value)}
+                        // onChange={(e) => setCompany(e.target.value)}
+                        onChange={handleChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="email-input"
+                        id="emailInput"
                         label="E-post"
-                        onChange={(e) => setEmail(e.target.value)}
+                        // onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleChange}
                         fullWidth
                     />
                 </Grid>
@@ -81,11 +126,12 @@ const MessageForm: React.FC<Props> = () => {
                 <Grid item xs={12}>
                     <TextField
                         required
-                        id="message-input"
+                        id="messageInput"
                         label="Melding"
                         multiline
                         fullWidth
-                        onChange={(e) => setMessage(e.target.value)}
+                        // onChange={(e) => setMessage(e.target.value)}
+                        onChange={handleChange}
                     />
                 </Grid>
                 <Grid item>
@@ -101,6 +147,24 @@ const MessageForm: React.FC<Props> = () => {
 
                 </Grid>
             </Grid>
+
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}
+                open={openSnackbar}
+                autoHideDuration={5000}
+                onClose={handleSnackbarClose}
+                message="Melding motatt!"
+                action={
+                    <React.Fragment>
+                        <IconButton size="small" aria-label="close" color="inherit" onClick={handleSnackbarClose}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    </React.Fragment>
+                }
+            />
         </div >
     );
 }

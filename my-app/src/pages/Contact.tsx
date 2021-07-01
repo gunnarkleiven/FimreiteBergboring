@@ -135,7 +135,6 @@ const Contact: React.FC<ContactProps> = () => {
 
                         <MessageForm />
                     </Grid>
-
                 </Grid>
 
             </Container>
