@@ -12,6 +12,7 @@ import contactImage1 from "../assets/likeAWallpaper1.png";
 import contactImage2 from "../assets/likeAWallpaper2.png";
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
+import MessageForm from "../components/MessageForm";
 
 interface ContactProps {
 
@@ -124,14 +125,15 @@ const Contact: React.FC<ContactProps> = () => {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <Card className={classes.card}>
+                        {/* <Card className={classes.card}>
                             <CardContent>
                                 <Typography variant="h6" align="center">
-                                    Here comes the possibilty to leave a message
+                                    "Legg igjen melding" under konstruksjon
                                 </Typography>
                             </CardContent>
-                        </Card>
+                        </Card> */}
 
+                        <MessageForm />
                     </Grid>
 
                 </Grid>
