@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/FimreiteBergboring/static/js/main.de24f84f.chunk.js",
-    "main.js.map": "/FimreiteBergboring/static/js/main.de24f84f.chunk.js.map",
-    "runtime-main.js": "/FimreiteBergboring/static/js/runtime-main.584506b9.js",
-    "runtime-main.js.map": "/FimreiteBergboring/static/js/runtime-main.584506b9.js.map",
-    "static/js/2.dc08edae.chunk.js": "/FimreiteBergboring/static/js/2.dc08edae.chunk.js",
-    "static/js/2.dc08edae.chunk.js.map": "/FimreiteBergboring/static/js/2.dc08edae.chunk.js.map",
-    "static/js/3.5e081cc2.chunk.js": "/FimreiteBergboring/static/js/3.5e081cc2.chunk.js",
-    "static/js/3.5e081cc2.chunk.js.map": "/FimreiteBergboring/static/js/3.5e081cc2.chunk.js.map",
+    "main.js": "/FimreiteBergboring/static/js/main.02e6542e.chunk.js",
+    "main.js.map": "/FimreiteBergboring/static/js/main.02e6542e.chunk.js.map",
+    "runtime-main.js": "/FimreiteBergboring/static/js/runtime-main.d8760a6f.js",
+    "runtime-main.js.map": "/FimreiteBergboring/static/js/runtime-main.d8760a6f.js.map",
+    "static/js/2.ec0ddb3a.chunk.js": "/FimreiteBergboring/static/js/2.ec0ddb3a.chunk.js",
+    "static/js/2.ec0ddb3a.chunk.js.map": "/FimreiteBergboring/static/js/2.ec0ddb3a.chunk.js.map",
+    "static/js/3.97f480a8.chunk.js": "/FimreiteBergboring/static/js/3.97f480a8.chunk.js",
+    "static/js/3.97f480a8.chunk.js.map": "/FimreiteBergboring/static/js/3.97f480a8.chunk.js.map",
     "index.html": "/FimreiteBergboring/index.html",
-    "static/js/2.dc08edae.chunk.js.LICENSE.txt": "/FimreiteBergboring/static/js/2.dc08edae.chunk.js.LICENSE.txt",
+    "static/js/2.ec0ddb3a.chunk.js.LICENSE.txt": "/FimreiteBergboring/static/js/2.ec0ddb3a.chunk.js.LICENSE.txt",
     "static/media/Fimreite-logo-1.96d3bd13.png": "/FimreiteBergboring/static/media/Fimreite-logo-1.96d3bd13.png",
     "static/media/energywell.79d11c0d.jpeg": "/FimreiteBergboring/static/media/energywell.79d11c0d.jpeg",
     "static/media/fundament.80d0d44c.jpeg": "/FimreiteBergboring/static/media/fundament.80d0d44c.jpeg",
@@ -35,8 +35,8 @@
     "static/media/withNature.0c6aad6f.jpeg": "/FimreiteBergboring/static/media/withNature.0c6aad6f.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.584506b9.js",
-    "static/js/2.dc08edae.chunk.js",
-    "static/js/main.de24f84f.chunk.js"
+    "static/js/runtime-main.d8760a6f.js",
+    "static/js/2.ec0ddb3a.chunk.js",
+    "static/js/main.02e6542e.chunk.js"
   ]
 }
