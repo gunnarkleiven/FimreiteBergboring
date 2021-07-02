@@ -9,6 +9,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
+import MessageService from '../services/MessageService';
+
 interface Props {
 
 }
@@ -22,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-interface CompleteMessage {
+export interface CompleteMessage {
     nameInput: string;
     phonenumberInput: string;
     companyInput: string;
@@ -61,6 +63,18 @@ const MessageForm: React.FC<Props> = () => {
         console.log(completeMessage);
 
         setOpenSnackbar(true);
+
+        // from the tutorial https://bezkoder.com/react-firebase-crud/
+        // MessageService.create(completeMessage)
+        //     .then(() => {
+        //         console.log("Created message successfully!");
+        //         setOpenSnackbar(true);
+        //     })
+        //     .catch((err) => {
+        //         alert("Wops! Det skjedde ein feil ved leverigna av meldinga.");
+        //     })
+
+
     }
 
     const handleSnackbarClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
