@@ -92,10 +92,9 @@ const MessageForm: React.FC<Props> = () => {
             return
         }
 
-        // handleSubmitWithEmail(e);
+        handleSubmitWithEmail(e);
         setOpenSnackbar(true);
         clearFields();
-
     }
 
     const clearFields = () => {
@@ -114,17 +113,17 @@ const MessageForm: React.FC<Props> = () => {
         e.preventDefault();
 
         setStatus("Sending...");
-        console.log(e);
+        // console.log(e);
 
         // const { name, email, message } = e.target.elements;
 
         let details = {
-            // name: name.value,
-            // email: email.value,
-            // message: message.value,
-            name: "gunnarkleiventest@gmail.com",
-            email: "somedudes email",
-            message: "Test message",
+            // name: "gunnarkleiventest@gmail.com",
+            name: completeMessage["nameInput"],
+            number: completeMessage["phonenumberInput"],
+            company: completeMessage["companyInput"],
+            email: completeMessage["emailInput"],
+            message: completeMessage["messageInput"],
         }
 
         let response = await fetch("http://localhost:5000/contact", {
@@ -137,7 +136,6 @@ const MessageForm: React.FC<Props> = () => {
 
         setStatus("Submit");
         let result = await response.json();
-        alert(result.status);
         setOpenSnackbar(true);
 
 

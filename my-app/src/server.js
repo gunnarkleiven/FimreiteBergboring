@@ -11,7 +11,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/", router);
 app.listen(5000, function () { return console.log("server running"); });
-console.log(process.env.EMAIL_USERNAME);
 var contactEmail = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -22,6 +21,10 @@ var contactEmail = nodemailer.createTransport({
         pass: process.env.EMAIL_PASS
     }
 });
+// Takes the needed parameters, and constructs a nice looking string to be displayed in the email
+var constructMessage = function (name, number, company, email, message) {
+    return ("Ny melding fr\u00E5 nettsida.\nNavn: " + name + "\nTelefonnummer: " + number + "\nFirma: " + company + "\nE-post: " + email + "\nMelding:\n" + message);
+};
 contactEmail.verify(function (error) {
     if (error) {
         console.log(error);
@@ -31,15 +34,17 @@ contactEmail.verify(function (error) {
     }
 });
 router.post("/contact", function (req, res) {
-    var name = req.body.name;
-    var email = req.body.email;
-    var message = req.body.message;
+    // const name = req.body.name;
+    // const email = req.body.email;
+    // const message = req.body.message;
+    var _a = req.body, name = _a.name, number = _a.number, company = _a.company, email = _a.email, message = _a.message;
+    var mailMessage = constructMessage(name, number, company, email, message);
     var mail = {
         //from: "gunnarkleiventest@gmail.com",
-        from: name,
-        to: "gunnarkleiven98@gmail.com",
-        subject: "TEST",
-        text: "This is another test email"
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_TO,
+        subject: "Melding fr\u00E5: " + name,
+        text: mailMessage
     };
     contactEmail.sendMail(mail, function (error) {
         if (error) {
@@ -47,7 +52,6 @@ router.post("/contact", function (req, res) {
         }
         else {
             res.json({ status: "Message Sent" });
-            console.log("Message sent");
         }
     });
 });

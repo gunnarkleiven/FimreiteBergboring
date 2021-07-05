@@ -16,8 +16,6 @@ app.use(express.json())
 app.use("/", router);
 app.listen(5000, () => console.log("server running"));
 
-console.log(process.env.EMAIL_USERNAME);
-
 
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',
@@ -30,6 +28,14 @@ const contactEmail = nodemailer.createTransport({
     }
 });
 
+
+// Takes the needed parameters, and constructs a nice looking string to be displayed in the email
+const constructMessage = (name: string, number: string, company: string, email: string, message: string) => {
+    return (
+        `Ny melding frå nettsida.\nNavn: ${name}\nTelefonnummer: ${number}\nFirma: ${company}\nE-post: ${email}\nMelding:\n${message}`
+    );
+}
+
 contactEmail.verify((error: any) => {
     if (error) {
         console.log(error);
@@ -40,15 +46,20 @@ contactEmail.verify((error: any) => {
 });
 
 router.post("/contact", (req: any, res: any) => {
-    const name = req.body.name;
-    const email = req.body.email;
-    const message = req.body.message;
+    // const name = req.body.name;
+    // const email = req.body.email;
+    // const message = req.body.message;
+
+    const { name, number, company, email, message } = req.body;
+
+    const mailMessage = constructMessage(name, number, company, email, message);
+
     const mail = {
         //from: "gunnarkleiventest@gmail.com",
-        from: name,
-        to: "gunnarkleiven98@gmail.com",
-        subject: "TEST",
-        text: "This is another test email",
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_TO,
+        subject: `Melding frå: ${name}`,
+        text: mailMessage,
     };
 
     contactEmail.sendMail(mail, (error: any) => {
