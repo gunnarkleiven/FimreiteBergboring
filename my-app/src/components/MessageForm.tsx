@@ -8,7 +8,6 @@ import EmailIcon from '@material-ui/icons/Email';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import { main } from '../mailServer';
 
 import MessageService from '../services/MessageService';
 
@@ -41,6 +40,9 @@ const MessageForm: React.FC<Props> = () => {
     const [phonenumber, setPhonenumber] = useState<string>("");
     const [company, setCompany] = useState<string>("");
     const [email, setEmail] = useState<string>("");
+    // True if there is an empty entry, false if there are no error
+    const [emailError, setEmailError] = useState<boolean>(false);
+    const [messageError, setMessageError] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
     const [status, setStatus] = useState<string>("Submit");
 
@@ -55,13 +57,6 @@ const MessageForm: React.FC<Props> = () => {
     const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
 
     const handleSubmit = () => {
-        /* console.log(
-            `Submitted\nNavn: ${name}, Telefon: ${phonenumber}
-            Firma:: ${company}
-            Epost: ${email}
-            Message: ${message}`
-        ); */
-
         console.log(completeMessage);
 
         // main();
@@ -79,7 +74,43 @@ const MessageForm: React.FC<Props> = () => {
         //     })
     }
 
-    const handleSubmitWithEmail = async (e: any) => {
+    const handleButtonClick = (e: React.SyntheticEvent) => {
+        // First, check if everything is okay with the buttonclick (e.i., email and message fields are not empty)
+        let valid = true;
+        if (!completeMessage["emailInput"]) {
+            setEmailError(true);
+            console.log("Email can't be empty");
+            valid = false;
+        }
+        if (!completeMessage["messageInput"]) {
+            setMessageError(true);
+            console.log("Message can't be empty");
+            valid = false;
+        }
+
+        if (!valid) {
+            return
+        }
+
+        // handleSubmitWithEmail(e);
+        setOpenSnackbar(true);
+        clearFields();
+
+    }
+
+    const clearFields = () => {
+        setCompleteMessage({
+            nameInput: "",
+            phonenumberInput: "",
+            companyInput: "",
+            emailInput: "",
+            messageInput: "",
+        })
+        setEmailError(false);
+        setMessageError(false);
+    }
+
+    const handleSubmitWithEmail = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 
         setStatus("Sending...");
@@ -91,7 +122,7 @@ const MessageForm: React.FC<Props> = () => {
             // name: name.value,
             // email: email.value,
             // message: message.value,
-            name: "GunnarTest",
+            name: "gunnarkleiventest@gmail.com",
             email: "somedudes email",
             message: "Test message",
         }
@@ -169,6 +200,8 @@ const MessageForm: React.FC<Props> = () => {
                         // onChange={(e) => setEmail(e.target.value)}
                         onChange={handleChange}
                         fullWidth
+                        error={emailError}
+                        helperText={emailError && "This field can't be empty"}
                     />
                 </Grid>
 
@@ -181,6 +214,8 @@ const MessageForm: React.FC<Props> = () => {
                         fullWidth
                         // onChange={(e) => setMessage(e.target.value)}
                         onChange={handleChange}
+                        error={messageError}
+                        helperText={messageError && "This field can't be empty"}
                     />
                 </Grid>
                 <Grid item>
@@ -190,7 +225,8 @@ const MessageForm: React.FC<Props> = () => {
                         className={classes.button}
                         endIcon={<EmailIcon />}
                         // onClick={handleSubmit}
-                        onClick={handleSubmitWithEmail}
+                        onClick={handleButtonClick}
+                    // onClick={handleSubmitWithEmail}
                     >
                         Send inn
                     </Button>

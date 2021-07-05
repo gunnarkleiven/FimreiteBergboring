@@ -35,7 +35,8 @@ router.post("/contact", function (req, res) {
     var email = req.body.email;
     var message = req.body.message;
     var mail = {
-        from: "gunnarkleiventest@gmail.com",
+        //from: "gunnarkleiventest@gmail.com",
+        from: name,
         to: "gunnarkleiven98@gmail.com",
         subject: "TEST",
         text: "This is another test email"
@@ -46,6 +47,7 @@ router.post("/contact", function (req, res) {
         }
         else {
             res.json({ status: "Message Sent" });
+            console.log("Message sent");
         }
     });
 });
