@@ -8,6 +8,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import { main } from '../mailServer';
 
 import MessageService from '../services/MessageService';
 
@@ -41,6 +42,7 @@ const MessageForm: React.FC<Props> = () => {
     const [company, setCompany] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [message, setMessage] = useState<string>("");
+    const [status, setStatus] = useState<string>("Submit");
 
     const [completeMessage, setCompleteMessage] = useState<CompleteMessage>({
         nameInput: "",
@@ -62,6 +64,8 @@ const MessageForm: React.FC<Props> = () => {
 
         console.log(completeMessage);
 
+        // main();
+
         setOpenSnackbar(true);
 
         // from the tutorial https://bezkoder.com/react-firebase-crud/
@@ -73,6 +77,37 @@ const MessageForm: React.FC<Props> = () => {
         //     .catch((err) => {
         //         alert("Wops! Det skjedde ein feil ved leverigna av meldinga.");
         //     })
+    }
+
+    const handleSubmitWithEmail = async (e: any) => {
+        e.preventDefault();
+
+        setStatus("Sending...");
+        console.log(e);
+
+        // const { name, email, message } = e.target.elements;
+
+        let details = {
+            // name: name.value,
+            // email: email.value,
+            // message: message.value,
+            name: "GunnarTest",
+            email: "somedudes email",
+            message: "Test message",
+        }
+
+        let response = await fetch("http://localhost:5000/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(details)
+        });
+
+        setStatus("Submit");
+        let result = await response.json();
+        alert(result.status);
+        setOpenSnackbar(true);
 
 
     }
@@ -154,7 +189,8 @@ const MessageForm: React.FC<Props> = () => {
                         color="default"
                         className={classes.button}
                         endIcon={<EmailIcon />}
-                        onClick={handleSubmit}
+                        // onClick={handleSubmit}
+                        onClick={handleSubmitWithEmail}
                     >
                         Send inn
                     </Button>

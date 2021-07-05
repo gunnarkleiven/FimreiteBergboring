@@ -15,6 +15,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 import CategoryCard from '../components/CategoryCard';
+import Slideshow from '../components/Slideshow';
 
 // Import the pictures
 import waterImage from "../assets/water.jpeg";
@@ -168,20 +169,22 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
         else if (radioValue === "2") {
             return (
                 <div>
-                    <ThemeProvider theme={theme}>
-                        <Typography variant="h6" align="center" paragraph>
-                            <br />
-                            Me er eit selskap med base i Sogndal som driv med bergboring, og starta våren 2014. Me er no 3 ansatte.
-                            <br />
-                            <br />
-                            Arbeidsområdet er Sogn og Fjordane, Hordaland og Møre og Romsdal, men me er fleksible utover dette.
-                            <br />
-                            Eigar er Per Magne Fimreite.
-                            <br />
-                            <br />
-                            Me tilbyr tenester til konkurransedyktige prisar innan:
-                        </Typography>
-                    </ThemeProvider>
+                    <Container maxWidth="sm">
+                        <ThemeProvider theme={theme}>
+                            <Typography variant="h6" align="center" paragraph>
+                                <br />
+                                Me er eit selskap med base i Sogndal som driv med bergboring, og starta våren 2014. Me er no 3 ansatte.
+                                <br />
+                                <br />
+                                Arbeidsområdet er Sogn og Fjordane, Hordaland og Møre og Romsdal, men me er fleksible utover dette.
+                                <br />
+                                Eigar er Per Magne Fimreite.
+                                <br />
+                                <br />
+                                Me tilbyr tenester til konkurransedyktige prisar innan:
+                            </Typography>
+                        </ThemeProvider>
+                    </Container>
                     <Container className={classes.cardGrid} maxWidth="md">
                         <Grid container spacing={3}>
                             {categories.map((cat, idx) => {
@@ -192,6 +195,44 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
 
                         </Grid>
                     </Container>
+                </div>
+            )
+        }
+        else if (radioValue === "3") {
+            return (
+                <div>
+                    <Paper className={classes.paper} elevation={0}>
+                        <Container maxWidth="md">
+                            <Slideshow />
+                        </Container>
+                    </Paper>
+                    <Container maxWidth="sm">
+                        <ThemeProvider theme={theme}>
+                            <Typography variant="h6" align="center" paragraph>
+                                <br />
+                                Me er eit selskap med base i Sogndal som driv med bergboring, og starta våren 2014. Me er no 3 ansatte.
+                                <br />
+                                <br />
+                                Arbeidsområdet er Sogn og Fjordane, Hordaland og Møre og Romsdal, men me er fleksible utover dette.
+                                <br />
+                                Eigar er Per Magne Fimreite.
+                                <br />
+                                <br />
+                                Me tilbyr tenester til konkurransedyktige prisar innan:
+                            </Typography>
+                        </ThemeProvider>
+                    </Container>
+                    <Container className={classes.cardGrid} maxWidth="md">
+                        <Grid container spacing={3}>
+                            {categories.map((cat, idx) => {
+                                return (
+                                    <CategoryCard key={idx} cat={cat} />
+                                );
+                            })}
+
+                        </Grid>
+                    </Container>
+
                 </div>
             )
         }
