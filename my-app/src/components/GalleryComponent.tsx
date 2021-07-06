@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import { ImageInImageGallery } from '../pages/Gallery';
 import GalleryDialog from '../components/GalleryDialog';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
