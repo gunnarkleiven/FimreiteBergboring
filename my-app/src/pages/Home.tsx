@@ -4,7 +4,6 @@ import { makeStyles, createStyles, Theme, createMuiTheme, ThemeProvider, respons
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import ICategory from '../interfaces/Category';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -16,12 +15,9 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 import CategoryCard from '../components/CategoryCard';
 import Slideshow from '../components/Slideshow';
+import categories from '../misc/categories';
 
 // Import the pictures
-import waterImage from "../assets/water.jpeg";
-import piercingImage from "../assets/piercing.jpeg";
-import energywellImage from "../assets/energywell.jpeg";
-import fundamentImage from "../assets/fundament.jpeg";
 import frontPicture from "../assets/picture11.jpeg";
 
 
@@ -76,38 +72,7 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
 
     const classes = useStyles();
 
-    const categories: ICategory[] = [
-        {
-            name: "water",
-            image: waterImage,
-            header: "Boring etter vatn:",
-            text: "Boring etter vatn for vassforsyning til gardsbruk, bustadhus, hytter, bustadfelt osv.",
-            path: "/water/",
 
-        },
-        {
-            name: "piercing",
-            image: piercingImage,
-            header: "Gjennomboring:",
-            text: "Gjennomboring av fjellknausar, kryssing av vegar, tomter og eksisterande bebyggelse.. Dette er eit rimleg og miljøvenleg alternativ til konvensjonelle grøfter.",
-            path: "/piercing/",
-
-        },
-        {
-            name: "energywells",
-            image: energywellImage,
-            header: "Energibrønnar:",
-            text: "Boring av energibrønnar til varmepumper i bustadhus, dette er ei eingongsinvistering som gjer at du kan utnytte ein miljøvenleg og fornybar energiresurs.",
-            path: "/energywells/",
-        },
-        {
-            name: "fundament",
-            image: fundamentImage,
-            header: "Fundamentering:",
-            text: "Fundamentering: Er ein teknikk som blir benytta der det er usikker grunn for etablering av bygg.",
-            path: "/fundament/",
-        }
-    ]
 
     const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRadioValue((event.target as HTMLInputElement).value);

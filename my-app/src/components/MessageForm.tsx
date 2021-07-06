@@ -36,14 +36,14 @@ export interface CompleteMessage {
 const MessageForm: React.FC<Props> = () => {
     const classes = useStyles();
     // States for the different forms
-    const [name, setName] = useState<string>("");
-    const [phonenumber, setPhonenumber] = useState<string>("");
-    const [company, setCompany] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
+    // const [name, setName] = useState<string>("");
+    // const [phonenumber, setPhonenumber] = useState<string>("");
+    // const [company, setCompany] = useState<string>("");
+    // const [email, setEmail] = useState<string>("");
     // True if there is an empty entry, false if there are no error
     const [emailError, setEmailError] = useState<boolean>(false);
     const [messageError, setMessageError] = useState<boolean>(false);
-    const [message, setMessage] = useState<string>("");
+    // const [message, setMessage] = useState<string>("");
     const [status, setStatus] = useState<string>("Submit");
 
     const [completeMessage, setCompleteMessage] = useState<CompleteMessage>({

@@ -17,8 +17,6 @@ import PiercingPage from "./pages/PiercingPage";
 import EnergywellPage from "./pages/EnergywellPage";
 import FundamentPage from "./pages/FundamentPage";
 
-import dotenv from 'dotenv';
-
 export interface NameAndPath {
   path: string;
   name: string;
