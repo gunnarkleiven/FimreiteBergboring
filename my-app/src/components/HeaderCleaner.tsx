@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button';
 import MenuListLinks from './MenuListLinks';
 import Typography from '@material-ui/core/Typography';
 import MenuDrawer from '../components/MenuDrawer';
+import services from '../misc/services';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -141,24 +142,6 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
         }
     ]
 
-    const services: NameAndPath[] = [
-        {
-            name: "Boring etter vatn",
-            path: "/water/",
-        },
-        {
-            name: "Gjennomboring",
-            path: "/piercing/",
-        },
-        {
-            name: "Energibrønnar",
-            path: "/energywells/",
-        },
-        {
-            name: "Fundamentering",
-            path: "/fundament/",
-        },
-    ]
 
 
     const phoneNumber = "000 00 000"

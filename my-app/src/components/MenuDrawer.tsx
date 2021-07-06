@@ -6,12 +6,13 @@ import { NameAndPath } from '../App';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import PageLinkButton from './PageLinkButton';
+import List from '@material-ui/core/List';
 
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         list: {
-            width: 250,
+            width: 200,
         },
         fullList: {
             width: 'auto',
@@ -33,6 +34,7 @@ const MenuDrawer: React.FunctionComponent<Props> = ({ linkPaths }) => {
 
     const toggleDrawer = () => {
         //setIsOpen((prevState) => !prevState);
+        // console.log("Toggled drawer");
         setIsOpen(!isOpen);
     }
 
@@ -51,20 +53,23 @@ const MenuDrawer: React.FunctionComponent<Props> = ({ linkPaths }) => {
                 anchor="right"
                 variant="temporary"
                 open={isOpen}
-                onClick={toggleDrawer}
+                // onClick={toggleDrawer}
                 onClose={closeDrawer}
             >
-                {pages.linkPaths.map((path, index) => {
-                    return (
-                        <PageLinkButton
-                            key={index}
-                            path={path.path}
-                            name={path.name}
-                            displayPageName={true}
-                        />
-                    );
-                })}
-                <Divider />
+                <List className={classes.list}>
+                    {pages.linkPaths.map((path, index) => {
+                        return (
+                            <PageLinkButton
+                                key={index}
+                                path={path.path}
+                                name={path.name}
+                                parentDrawerToggleState={toggleDrawer}
+                            />
+
+                        );
+                    })}
+                    <Divider />
+                </List>
 
             </Drawer>
         </div>

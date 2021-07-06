@@ -42,7 +42,16 @@ const useStyles = makeStyles((theme: Theme) =>
             flexDirection: 'column',
         },
         cardGrid: {
-            paddingTop: theme.spacing(8),
+            paddingTop: theme.spacing(8), paper: {
+                position: 'relative',
+                //backgroundColor: theme.palette.grey[800],
+                backgroundColor: "#4a4e57",
+                color: theme.palette.common.white,
+                marginBottom: theme.spacing(4),
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+            },
             paddingBottom: theme.spacing(8),
         },
         paper: {
@@ -50,6 +59,15 @@ const useStyles = makeStyles((theme: Theme) =>
             //backgroundColor: theme.palette.grey[800],
             backgroundColor: "#4a4e57",
             color: theme.palette.common.white,
+            marginBottom: theme.spacing(4),
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+        },
+        paperWhite: {
+            position: 'relative',
+            //backgroundColor: theme.palette.grey[800],
+            // color: theme.palette.common.white,
             marginBottom: theme.spacing(4),
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -65,9 +83,22 @@ theme = responsiveFontSizes(theme);
 
 const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
     const [radioValue, setRadioValue] = useState<string>("1");
+    const [mobileView, setMobileView] = useState<boolean>(false);
 
     useEffect(() => {
         logging.info(`Loading ${pageName}`);
+
+        const setResponsiveness = () => {
+            return window.innerWidth < 1050 ? setMobileView(true) : setMobileView(false);
+        };
+
+
+        setResponsiveness();
+        window.addEventListener("resize", () => setResponsiveness());
+
+        return () => {
+            window.removeEventListener("resize", () => setResponsiveness());
+        }
     }, [])
 
     const classes = useStyles();
@@ -106,15 +137,16 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
                                         </Typography>
                                     </ThemeProvider>
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <Card>
-                                        <CardMedia
-                                            component="img"
-                                            alt="frontPageImage"
-                                            src={frontPicture}
-                                        />
-                                    </Card>
-                                </Grid>
+                                {!mobileView &&
+                                    <Grid item xs={12} sm={6}>
+                                        <Card>
+                                            <CardMedia
+                                                component="img"
+                                                alt="frontPageImage"
+                                                src={frontPicture}
+                                            />
+                                        </Card>
+                                    </Grid>}
                             </Grid>
                         </Container>
                     </Paper>
@@ -201,6 +233,59 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
                 </div>
             )
         }
+        else if (radioValue === "4") {
+            return (
+                <div>
+                    <Paper className={classes.paperWhite} elevation={0}>
+                        <Container maxWidth="lg">
+                            <Grid
+                                container
+                                spacing={3}
+                                justify="center"
+                                alignItems="center"
+                            >
+                                <Grid item xs={12} sm={6}>
+                                    <ThemeProvider theme={theme}>
+                                        <Typography variant="h6" align="center" paragraph>
+                                            <br />
+                                            Me er eit selskap med base i Sogndal som driv med bergboring, og starta våren 2014. Me er no 3 ansatte.
+                                            <br />
+                                            <br />
+                                            Arbeidsområdet er Sogn og Fjordane, Hordaland og Møre og Romsdal, men me er fleksible utover dette.
+                                            <br />
+                                            Eigar er Per Magne Fimreite.
+                                            <br />
+                                            <br />
+                                            Me tilbyr tenester til konkurransedyktige prisar innan:
+                                        </Typography>
+                                    </ThemeProvider>
+                                </Grid>
+                                {!mobileView &&
+                                    <Grid item xs={12} sm={6}>
+                                        <Card>
+                                            <CardMedia
+                                                component="img"
+                                                alt="frontPageImage"
+                                                src={frontPicture}
+                                            />
+                                        </Card>
+                                    </Grid>}
+                            </Grid>
+                        </Container>
+                    </Paper>
+                    <Container className={classes.cardGrid} maxWidth="md">
+                        <Grid container spacing={3}>
+                            {categories.map((cat, idx) => {
+                                return (
+                                    <CategoryCard key={idx} cat={cat} />
+                                );
+                            })}
+
+                        </Grid>
+                    </Container>
+                </div>
+            )
+        }
         else {
             return (
                 <div></div>
@@ -217,6 +302,7 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
                     <FormControlLabel value="1" control={<Radio />} label="1" />
                     <FormControlLabel value="2" control={<Radio />} label="2" />
                     <FormControlLabel value="3" control={<Radio />} label="3" />
+                    <FormControlLabel value="4" control={<Radio />} label="4" />
                 </RadioGroup>
             </FormControl>
         </div>

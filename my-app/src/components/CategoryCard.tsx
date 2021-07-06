@@ -6,9 +6,11 @@ import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom';
 
-import PageLinkButton from './PageLinkButton';
+// import PageLinkButton from './PageLinkButton';
 import ICategory from "../interfaces/Category";
+import Button from '@material-ui/core/Button';
 
 
 
@@ -52,11 +54,17 @@ const CategoryCard: React.FunctionComponent<CategoryCardProps> = ({ cat }) => {
                     </Typography>
                 </CardContent>
                 <CardActions className={classes.actions}>
-                    <PageLinkButton
+                    {/* <PageLinkButton
                         path={category.path}
                         name={category.name}
                         displayPageName={false}
-                    />
+                    /> */}
+                    <Button
+                        component={Link}
+                        to={category.path}
+                    >
+                        Les meir
+                    </Button>
                 </CardActions>
             </Card>
         </Grid>
