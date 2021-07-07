@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme, createTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { NameAndPath } from '../App';
@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
             boxShadow: "none",
         },
         cardMobile: {
-            minWidth: 175,
+            minWidth: 150,
             backgroundColor: "#4a4e57",
             flex: 1,
             border: "none",
@@ -94,6 +94,9 @@ interface HeaderButtonField {
     name: string;
     path: string;
 }
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
     // const [pages, setPages] = useState<Props>({ linkPaths });
@@ -210,9 +213,11 @@ const HeaderCleaner: React.FunctionComponent<Props> = ({ linkPaths }) => {
                     </CardActionArea>
                 </Card>
 
-                <Typography variant="h6">
-                    Meny
-                </Typography>
+                <ThemeProvider theme={theme}>
+                    <Typography variant="h6">
+                        Meny
+                    </Typography>
+                </ThemeProvider>
 
                 <MenuDrawer linkPaths={buttonField} />
             </Toolbar >

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import { ImageInImageGallery } from '../pages/Gallery';
 import GalleryDialog from '../components/GalleryDialog';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -40,7 +43,33 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
     const [dialogOpen, setDialogOpen] = useState<boolean>(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState<number>(1);
 
+    const [columnNumber, setColumnNumber] = useState<number>(3);
+
     const classes = useStyles();
+
+    useEffect(() => {
+        const setResponsiveness = () => {
+            // return window.innerWidth < 1050 ? setMobileView(true) : setMobileView(false);
+            if (window.innerWidth > 900) {
+                return setColumnNumber(3);
+            }
+            else if (window.innerWidth > 600) {
+                return setColumnNumber(2);
+            }
+            else {
+                return setColumnNumber(1);
+            }
+
+        };
+
+        setResponsiveness();
+        window.addEventListener("resize", () => setResponsiveness());
+
+        return () => {
+            window.removeEventListener("resize", () => setResponsiveness());
+        }
+
+    }, []);
 
     const handleMouseOver = (idx: number) => {
         // onsole.log(`Hovering picture ${idx}`);
@@ -102,7 +131,7 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
     return (
         <div className={classes.root}>
             <GalleryDialog allImages={allImages} getSelectedImageIndex={getSelectedImageIndex} changeImageIndex={changeImageIndex} open={dialogOpen} onClose={handleCloseDialog} />
-            <GridList cellHeight={160} className={classes.gridList} cols={3}>
+            <GridList cellHeight={160} className={classes.gridList} cols={columnNumber}>
                 {allImages.map((image, idx) => {
                     return (
                         <GridListTile key={idx} cols={1}>
