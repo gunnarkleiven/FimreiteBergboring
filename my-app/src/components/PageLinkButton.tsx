@@ -46,7 +46,7 @@ const PageLinkButton: React.FunctionComponent<Props> = ({ path, name, parentDraw
 
     const handleClick = () => {
         // console.log(`Click to page ${pageName}`)
-        console.log("Clicked the expander");
+        // console.log("Clicked the expander");
         setOpen(!open);
     }
 
