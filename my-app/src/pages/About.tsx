@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, createStyles, Theme, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme, createTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-let theme = createMuiTheme();
+let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
 const About: React.FC<AboutProps> = () => {
@@ -37,7 +37,7 @@ const About: React.FC<AboutProps> = () => {
                     container
                     className={classes.gridContainer}
                     direction="row"
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                     spacing={3}
                 >

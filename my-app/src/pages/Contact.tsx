@@ -70,7 +70,7 @@ const Contact: React.FC<ContactProps> = () => {
                     container
                     className={classes.gridContainer}
                     direction="row"
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                     spacing={3}
                 >

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
             width: 'auto',
         },
         menuButton: {
-            marginLeft: theme.spacing(2),
+            marginLeft: theme.spacing(1),
         },
     })
 );

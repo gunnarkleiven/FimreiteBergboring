@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logging from '../config/logging';
-import { makeStyles, createStyles, Theme, createMuiTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme, createTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-let theme = createMuiTheme();
+let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
 
@@ -118,7 +118,7 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
                             <Grid
                                 container
                                 spacing={3}
-                                justify="center"
+                                justifyContent="center"
                                 alignItems="center"
                             >
                                 <Grid item xs={12} sm={6}>
@@ -241,7 +241,7 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
                             <Grid
                                 container
                                 spacing={3}
-                                justify="center"
+                                justifyContent="center"
                                 alignItems="center"
                             >
                                 <Grid item xs={12} sm={6}>
