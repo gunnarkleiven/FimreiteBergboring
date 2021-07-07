@@ -88,7 +88,7 @@ const GalleryDialog: React.FC<Props> = (props: Props) => {
             aria-labelledby="simple-dialog-title"
             open={open}
         >
-            {/* <Grid container direction="row" justify="center" alignItems="center">
+            {/* <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid item xs={1}>
                     <IconButton aria-label="prev" onClick={handleOnClickPrev}>
                         <ArrowBackIosIcon />

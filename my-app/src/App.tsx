@@ -3,11 +3,9 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import logging from './config/logging';
 import routes from './config/routes';
 import Header from './components/Header';
-import HeaderCleaner from './components/HeaderCleaner';
 import Footer from './components/Footer';
 import { BrowserRouter, Route, } from 'react-router-dom';
 import About from './pages/About';
-import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
@@ -50,12 +48,9 @@ const App: React.FC<{}> = () => {
 
     <div className={classes.root}>
       <BrowserRouter>
-        <HeaderCleaner linkPaths={allPaths} />
+        <Header linkPaths={allPaths} />
         <Route exact path={process.env.PUBLIC_URL + '/'}>
           <Home pageName="This is the home page" />
-        </Route>
-        <Route exact path="/services">
-          <Services />
         </Route>
         <Route exact path="/gallery">
           <Gallery />

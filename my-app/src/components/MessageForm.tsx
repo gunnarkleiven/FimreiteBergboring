@@ -9,8 +9,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-import MessageService from '../services/MessageService';
-
 interface Props {
 
 }
@@ -62,16 +60,6 @@ const MessageForm: React.FC<Props> = () => {
         // main();
 
         setOpenSnackbar(true);
-
-        // from the tutorial https://bezkoder.com/react-firebase-crud/
-        // MessageService.create(completeMessage)
-        //     .then(() => {
-        //         console.log("Created message successfully!");
-        //         setOpenSnackbar(true);
-        //     })
-        //     .catch((err) => {
-        //         alert("Wops! Det skjedde ein feil ved leverigna av meldinga.");
-        //     })
     }
 
     const handleButtonClick = (e: React.SyntheticEvent) => {
@@ -159,7 +147,7 @@ const MessageForm: React.FC<Props> = () => {
 
     return (
         <div>
-            <Grid container spacing={2} alignItems="center" justify="center">
+            <Grid container spacing={2} alignItems="center" justifyContent="center">
                 <Grid item xs={12}>
                     <Typography variant="h6" align="center">
                         Legg igjen ei melding her (under konstruksjon)
