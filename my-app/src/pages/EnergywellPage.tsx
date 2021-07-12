@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme, createTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 interface EnergywellPageProps {
 
 }
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -23,12 +26,14 @@ const EnergywellPage: React.FC<EnergywellPageProps> = () => {
     return (
         <div className={classes.root}>
             <Container maxWidth="md">
-                <Typography variant="h6" align="center" paragraph>
-                    <br />
-                    Energibrønnar
-                    <br />
-                    Denne sida er under konstruksjon
-                </Typography>
+                <ThemeProvider theme={theme}>
+                    <Typography variant="h6" align="center" paragraph>
+                        <br />
+                        Energibrønnar
+                        <br />
+                        Denne sida er under konstruksjon
+                    </Typography>
+                </ThemeProvider>
             </Container>
         </div>
     );

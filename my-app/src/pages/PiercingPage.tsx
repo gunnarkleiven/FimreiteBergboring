@@ -1,11 +1,14 @@
 import React from 'react'
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme, createTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
 interface PiercingPageProps {
 
 }
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -22,12 +25,14 @@ const PiercingPage: React.FC<PiercingPageProps> = () => {
     return (
         <div className={classes.root}>
             <Container maxWidth="md">
-                <Typography variant="h6" align="center" paragraph>
-                    <br />
-                    Gjennomboring
-                    <br />
-                    Denne sida er under konstruksjon
-                </Typography>
+                <ThemeProvider theme={theme}>
+                    <Typography variant="h6" align="center" paragraph>
+                        <br />
+                        Gjennomboring
+                        <br />
+                        Denne sida er under konstruksjon
+                    </Typography>
+                </ThemeProvider>
             </Container>
         </div>
     );
