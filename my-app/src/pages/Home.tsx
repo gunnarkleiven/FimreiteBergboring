@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
+            height: 333,
         },
         paperWhite: {
             position: 'relative',
@@ -82,7 +83,7 @@ theme = responsiveFontSizes(theme);
 
 
 const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
-    const [radioValue, setRadioValue] = useState<string>("1");
+    const [radioValue, setRadioValue] = useState<string>("3");
     const [mobileView, setMobileView] = useState<boolean>(false);
 
     useEffect(() => {
@@ -198,11 +199,11 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
         else if (radioValue === "3") {
             return (
                 <div>
-                    <Paper className={classes.paper} elevation={0}>
+                    {!mobileView && <Paper className={classes.paper} elevation={0} square>
                         <Container maxWidth="md">
                             <Slideshow />
                         </Container>
-                    </Paper>
+                    </Paper>}
                     <Container maxWidth="sm">
                         <ThemeProvider theme={theme}>
                             <Typography variant="h6" align="center" paragraph>

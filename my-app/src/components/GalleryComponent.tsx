@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
 import { ImageInImageGallery } from '../pages/Gallery';
 import GalleryDialog from '../components/GalleryDialog';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+
+import ImageList from '@material-ui/core/ImageList';
+import ImageListItem from '@material-ui/core/ImageListItem';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -131,10 +130,10 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
     return (
         <div className={classes.root}>
             <GalleryDialog allImages={allImages} getSelectedImageIndex={getSelectedImageIndex} changeImageIndex={changeImageIndex} open={dialogOpen} onClose={handleCloseDialog} />
-            <GridList cellHeight={160} className={classes.gridList} cols={columnNumber}>
+            <ImageList rowHeight={160} className={classes.gridList} cols={columnNumber}>
                 {allImages.map((image, idx) => {
                     return (
-                        <GridListTile key={idx} cols={1}>
+                        <ImageListItem key={idx} cols={1}>
                             <img
                                 src={image.source}
                                 alt={image.alt}
@@ -149,11 +148,11 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
                                     transition: allImages[idx].hovered ? '0.4s' : undefined,
                                 }}
                             />
-                        </GridListTile>
+                        </ImageListItem>
                     )
                 })}
 
-            </GridList>
+            </ImageList>
         </div>
     );
 }

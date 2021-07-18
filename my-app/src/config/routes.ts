@@ -1,6 +1,5 @@
 import IRoute from '../interfaces/route';
 import About from '../pages/About';
-import Services from '../pages/Services';
 import Gallery from '../pages/Gallery';
 import HomePage from '../pages/Home';
 
@@ -9,12 +8,6 @@ const routes: IRoute[] = [
         path: process.env.PUBLIC_URL + '/',
         name: 'Home',
         component: HomePage,
-        exact: true,
-    },
-    {
-        path: '/services/',
-        name: 'Services',
-        component: Services,
         exact: true,
     },
     {

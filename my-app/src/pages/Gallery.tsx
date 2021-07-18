@@ -144,7 +144,7 @@ const Gallery: React.FC<GalleryProps> = () => {
                     container
                     className={classes.gridContainer}
                     direction="row"
-                    justify="center"
+                    justifyContent="center"
                     spacing={3}
                 >
                     <Grid item xs={12}>
