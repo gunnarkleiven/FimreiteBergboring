@@ -7,7 +7,7 @@ import image3 from '../assets/bilde3.jpeg';
 import image4 from '../assets/bilde4.jpeg';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-
+import Paper from '@material-ui/core/Paper';
 
 
 interface SlideshowSettings {
@@ -53,7 +53,7 @@ const Slideshow: React.FC = () => {
         animation: "fade",
         indicators: true,
         timeout: 500,
-        interval: 5000,
+        interval: 4000,
         navButtonsAlwaysVisible: false,
         navButtonsAlwaysInvisible: false,
         cycleNavigation: true,
