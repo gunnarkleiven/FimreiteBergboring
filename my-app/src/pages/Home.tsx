@@ -14,8 +14,9 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 import CategoryCard from '../components/CategoryCard';
-import Slideshow from '../components/Slideshow';
 import categories from '../misc/categories';
+import Slideshow from '../components/Slideshow';
+import SlideshowUpdated from '../components/SlideshowUpdated';
 
 // Import the pictures
 import frontPicture from "../assets/picture11.jpeg";
@@ -202,6 +203,7 @@ const HomePage: React.FunctionComponent<Props> = ({ pageName }) => {
                     {!mobileView && <Paper className={classes.paper} elevation={0} square>
                         <Container maxWidth="md">
                             <Slideshow />
+                            {/* <SlideshowUpdated /> */}
                         </Container>
                     </Paper>}
                     <Container maxWidth="sm">
