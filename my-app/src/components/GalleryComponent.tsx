@@ -129,7 +129,13 @@ const GalleryComponent: React.FC<Props> = ({ images }) => {
 
     return (
         <div className={classes.root}>
-            <GalleryDialog allImages={allImages} getSelectedImageIndex={getSelectedImageIndex} changeImageIndex={changeImageIndex} open={dialogOpen} onClose={handleCloseDialog} />
+            <GalleryDialog
+                allImages={allImages}
+                getSelectedImageIndex={getSelectedImageIndex}
+                changeImageIndex={changeImageIndex}
+                open={dialogOpen}
+                onClose={handleCloseDialog}
+            />
             <ImageList rowHeight={160} className={classes.gridList} cols={columnNumber}>
                 {allImages.map((image, idx) => {
                     return (

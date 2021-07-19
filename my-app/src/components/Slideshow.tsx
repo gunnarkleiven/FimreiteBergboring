@@ -60,7 +60,7 @@ const Slideshow: React.FC = () => {
         animation: "fade",
         indicators: false,
         timeout: 500,
-        interval: 4000,
+        interval: 5000,
         navButtonsAlwaysVisible: false,
         navButtonsAlwaysInvisible: false,
         cycleNavigation: true,
